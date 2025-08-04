@@ -1,5 +1,5 @@
 {
-  "active_theme": "tight",
+  "active_theme": "bootstrap",
   "themes": {
     "tailwind": {
       "name": "Tailwind Theme",
@@ -12,6 +12,10 @@
     "classic": {
       "name": "Classic CSS Theme",
       "path": "themes/classic"
+    },
+    "bootstrap": {
+      "name": "Bootstrap Theme",
+      "path": "themes/bootstrap"
     }
   }
 }

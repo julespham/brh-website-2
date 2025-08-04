@@ -35,11 +35,14 @@ class WebsiteBuilder:
         self.active_theme = self.load_active_theme()
         
         # Set up Jinja2 environment
+        theme_name = self.theme_config['active_theme']
+        template_paths = [
+            str(self.templates_dir / theme_name),  # Theme-specific templates first
+            str(self.templates_dir / "base"),      # Fallback to base templates
+            str(self.themes_dir / theme_name)      # Theme includes (head.html, etc.)
+        ]
         self.jinja_env = Environment(
-            loader=FileSystemLoader([
-                str(self.templates_dir / "base"),
-                str(self.themes_dir / self.theme_config['active_theme'])
-            ])
+            loader=FileSystemLoader(template_paths)
         )
     
     def load_site_config(self) -> Dict[str, Any]:

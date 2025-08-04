@@ -1,0 +1,88 @@
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<style>
+  /* Custom image styling that works with Bootstrap */
+  .image-base {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background-size: cover, contain;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+  }
+  
+  /* Square images - for cards */
+  .image-square {
+    height: 80px;
+    width: 80px;
+    background: 
+      linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)),
+      url('src/assets/images/placeholder.png');
+  }
+  
+  /* Rectangular images - for news */
+  .image-rectangle {
+    height: 112px;
+    width: 160px;
+    background: 
+      linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)),
+      url('src/assets/images/placeholder.png');
+  }
+  
+  /* Built-in image types - square versions for cards */
+  .image-square.builtin-tools { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/tools-square.png'); }
+  .image-square.builtin-award { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/award-square.png'); }
+  .image-square.builtin-learn { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/learn-square.png'); }
+  .image-square.builtin-robot { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/robot-square.png'); }
+  .image-square.builtin-network { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/network-square.png'); }
+  .image-square.builtin-code { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/code-square.png'); }
+  .image-square.builtin-team { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/team-square.png'); }
+  .image-square.builtin-build { background-image: linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/build-square.png'); }
+  
+  /* Built-in image types - rectangular versions for news */
+  .image-rectangle.builtin-tools { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/tools-rect.png'); }
+  .image-rectangle.builtin-award { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/award-rect.png'); }
+  .image-rectangle.builtin-learn { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/learn-rect.png'); }
+  .image-rectangle.builtin-robot { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/robot-rect.png'); }
+  .image-rectangle.builtin-network { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/network-rect.png'); }
+  .image-rectangle.builtin-code { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/code-rect.png'); }
+  .image-rectangle.builtin-team { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/team-rect.png'); }
+  .image-rectangle.builtin-build { background-image: linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)), url('src/assets/images/builtin/build-rect.png'); }
+  
+  /* Bootstrap-specific adjustments */
+  .navbar-brand img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .hero-section {
+    max-width: 48rem;
+  }
+  
+  /* Responsive news cards */
+  @media (min-width: 768px) {
+    .news-card-body {
+      flex-direction: row;
+    }
+    .news-image-wrapper {
+      flex-shrink: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .news-card-body {
+      flex-direction: column;
+    }
+    .image-rectangle {
+      width: 100%;
+      height: 120px;
+    }
+  }
+</style>
