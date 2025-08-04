@@ -1,0 +1,15 @@
+[project]
+name = "brh-website"
+version = "0.1.0"
+description = "Boston Robot Hackers website build system"
+requires-python = ">=3.12"
+dependencies = [
+    "markdown>=3.4.0",
+    "python-frontmatter>=1.1.0", 
+    "pygments>=2.15.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+]

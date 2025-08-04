@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Robot Hackers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/robot-logo.png" alt="Boston Robot Hackers Logo" class="logo-icon">
+                <div class="logo-text">
+                    <h1>Boston Robot Hackers</h1>
+                    <p>Innovation through collaboration</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#meetings" class="nav-link">Meetings</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="members.html" class="nav-link">Members</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Building Tomorrow's Robots Today</h2>
+            <p>Boston's premier robotics community where engineers, makers, and innovators come together to push the boundaries of autonomous systems and artificial intelligence.</p>
+        </section>
+
+        <main class="main-content">
+            <!-- What's New Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h3 class="section-title">NEW What's New</h3>
+                    <p class="section-subtitle">Latest updates from our community</p>
+                </div>
+                <div class="news-grid" id="whats-new-content">
+                    <div class="news-card">
+                        <div class="news-image builtin-image tools"><span class="card-text">TOOLS</span></div>
+                        <div class="news-content">
+                            <h4 class="news-title">New CNC Mill Installation Complete</h4>
+                            <p class="news-text">Our new 3-axis CNC mill is now operational and available for member projects. Safety training sessions begin next week.</p>
+                            <div class="news-meta">August 01, 2025</div>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-image builtin-image award"><span class="card-text">AWARD</span></div>
+                        <div class="news-content">
+                            <h4 class="news-title">Summer Robot Competition Results</h4>
+                            <p class="news-text">Congratulations to Team Bolt for winning first place in our summer autonomous navigation challenge with their innovative LIDAR solution.</p>
+                            <div class="news-meta">July 28, 2025</div>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-image builtin-image learn"><span class="card-text">HELLO</span></div>
+                        <div class="news-content">
+                            <h4 class="news-title">New Member Orientation</h4>
+                            <p class="news-text">Join us this Saturday for orientation covering shop safety, tool usage, and project guidelines. Perfect for newcomers to our community.</p>
+                            <div class="news-meta">July 25, 2025</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" onclick="loadMoreNews()">View All Updates</button>
+            </section>
+
+            <!-- Meetings Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h3 class="section-title">MEET Meetings</h3>
+                    <p class="section-subtitle">Join our regular gatherings</p>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-image">HACK</div>
+                        <div class="card-content">
+                            <h4 class="card-title">Weekly Hack Night</h4>
+                            <p class="card-text">Join us every Thursday for collaborative project work, knowledge sharing, and hands-on robotics development.</p>
+                            <div class="card-meta">Every Thursday • 7:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">SHOW</div>
+                        <div class="card-content">
+                            <h4 class="card-title">Monthly Showcase</h4>
+                            <p class="card-text">Present your latest builds, receive expert feedback, and discover what other makers are creating.</p>
+                            <div class="card-meta">First Saturday • 2:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">LEARN</div>
+                        <div class="card-content">
+                            <h4 class="card-title">Workshop Series</h4>
+                            <p class="card-text">Deep-dive learning sessions covering everything from Arduino basics to advanced machine learning integration.</p>
+                            <div class="card-meta">Weekends • Various Times</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h3 class="section-title">BUILD Projects</h3>
+                    <p class="section-subtitle">Current community initiatives</p>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-image">ROBOT</div>
+                        <div class="card-content">
+                            <h4 class="card-title">Autonomous Delivery Bot</h4>
+                            <p class="card-text">Community project building a robot that can navigate indoor spaces and deliver items between floors using advanced pathfinding algorithms.</p>
+                            <div class="card-meta">Status: Active Development</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">NETWORK</div>
+                        <div class="card-content">
+                            <h4 class="card-title">IoT Sensor Network</h4>
+                            <p class="card-text">Creating a distributed mesh network of environmental sensors to monitor conditions and optimize workflows throughout the makerspace.</p>
+                            <div class="card-meta">Status: Testing Phase</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">ARM</div>
+                        <div class="card-content">
+                            <h4 class="card-title">Open Source Robot Arm</h4>
+                            <p class="card-text">Developing an accessible, high-precision robotic arm controller that makes industrial automation available to the maker community.</p>
+                            <div class="card-meta">Status: Beta Release</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" onclick="loadMoreProjects()">Explore All Projects</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
