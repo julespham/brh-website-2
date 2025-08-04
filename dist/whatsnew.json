@@ -1,0 +1,74 @@
+[
+  {
+    "id": "2025-08-02-yada",
+    "title": "Test X",
+    "date": "2025-08-01",
+    "emoji": "NEWS",
+    "card_text": "HELLO",
+    "card_graphic_custom": null,
+    "card_graphic_builtin": "learn",
+    "excerpt": "yada yada yada",
+    "content": "<h1 id=\"a-title\">A title!</h1>\n<p>Yada yada yadaYada yada yadaYada yada yadaYada yada yadaYada yada yadaYada yada yadaYada yada yadaYada yada yadaYada yada yadaYada yada yada</p>",
+    "metadata": {
+      "title": "Test X",
+      "date": "2025-08-01",
+      "card-graphic-builtin": "learn",
+      "card-text": "HELLO",
+      "excerpt": "yada yada yada"
+    }
+  },
+  {
+    "id": "2025-08-01-cnc-mill",
+    "title": "New CNC Mill Installation Complete",
+    "date": "2025-08-01",
+    "emoji": "NEWS",
+    "card_text": "TOOLS",
+    "card_graphic_custom": null,
+    "card_graphic_builtin": "tools",
+    "excerpt": "Our new 3-axis CNC mill is now operational and available for member projects. Safety training sessions begin next week.",
+    "content": "<h1 id=\"cnc-mill-now-online\">CNC Mill Now Online!</h1>\n<p>We're excited to announce that our new <strong>3-axis CNC mill</strong> is fully installed and operational! This precision machine opens up incredible possibilities for our robotics projects.</p>\n<h2 id=\"what-you-can-make\">What You Can Make</h2>\n<ul>\n<li>Custom aluminum brackets and chassis components</li>\n<li>Precision gear systems</li>\n<li>PCB enclosures with tight tolerances</li>\n<li>Prototype mechanical parts</li>\n</ul>\n<h2 id=\"getting-started\">Getting Started</h2>\n<p>To use the CNC mill, you'll need to complete our safety certification:</p>\n<div class=\"highlight\"><pre><span></span><code><span class=\"c1\"># Example G-code for a simple square cut</span>\n<span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">generate_square_gcode</span><span class=\"p\">(</span><span class=\"n\">size</span><span class=\"o\">=</span><span class=\"mi\">10</span><span class=\"p\">):</span>\n    <span class=\"n\">gcode</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"s2\">&quot;G21&quot;</span><span class=\"p\">,</span>  <span class=\"c1\"># Set units to millimeters</span>\n        <span class=\"s2\">&quot;G90&quot;</span><span class=\"p\">,</span>  <span class=\"c1\"># Absolute positioning</span>\n        <span class=\"sa\">f</span><span class=\"s2\">&quot;G1 X0 Y0 F1000&quot;</span><span class=\"p\">,</span>  <span class=\"c1\"># Move to origin</span>\n        <span class=\"sa\">f</span><span class=\"s2\">&quot;G1 X</span><span class=\"si\">{</span><span class=\"n\">size</span><span class=\"si\">}</span><span class=\"s2\"> Y0&quot;</span><span class=\"p\">,</span>   <span class=\"c1\"># First side</span>\n        <span class=\"sa\">f</span><span class=\"s2\">&quot;G1 X</span><span class=\"si\">{</span><span class=\"n\">size</span><span class=\"si\">}</span><span class=\"s2\"> Y</span><span class=\"si\">{</span><span class=\"n\">size</span><span class=\"si\">}</span><span class=\"s2\">&quot;</span><span class=\"p\">,</span>  <span class=\"c1\"># Second side</span>\n        <span class=\"sa\">f</span><span class=\"s2\">&quot;G1 X0 Y</span><span class=\"si\">{</span><span class=\"n\">size</span><span class=\"si\">}</span><span class=\"s2\">&quot;</span><span class=\"p\">,</span>   <span class=\"c1\"># Third side</span>\n        <span class=\"sa\">f</span><span class=\"s2\">&quot;G1 X0 Y0&quot;</span><span class=\"p\">,</span>        <span class=\"c1\"># Return to origin</span>\n    <span class=\"p\">]</span>\n    <span class=\"k\">return</span> <span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s2\">&quot;</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"n\">gcode</span><span class=\"p\">)</span>\n</code></pre></div>\n\n<h2 id=\"safety-training-schedule\">Safety Training Schedule</h2>\n<ul>\n<li><strong>August 5th, 7PM</strong>: Introduction to CNC operation</li>\n<li><strong>August 8th, 7PM</strong>: Hands-on workshop</li>\n<li><strong>August 12th, 2PM</strong>: Weekend makeup session</li>\n</ul>\n<p>Contact @workshop-lead in Slack to reserve your spot!</p>",
+    "metadata": {
+      "title": "New CNC Mill Installation Complete",
+      "date": "2025-08-01",
+      "card-graphic-builtin": "tools",
+      "card-text": "TOOLS",
+      "excerpt": "Our new 3-axis CNC mill is now operational and available for member projects. Safety training sessions begin next week."
+    }
+  },
+  {
+    "id": "2025-07-28-competition",
+    "title": "Summer Robot Competition Results",
+    "date": "2025-07-28",
+    "emoji": "NEWS",
+    "card_text": "AWARD",
+    "card_graphic_custom": null,
+    "card_graphic_builtin": "award",
+    "excerpt": "Congratulations to Team Bolt for winning first place in our summer autonomous navigation challenge with their innovative LIDAR solution.",
+    "content": "<h1 id=\"competition-winners-announced\">Competition Winners Announced!</h1>\n<p>What an incredible showing at our Summer Robot Competition! We had 12 teams competing in the autonomous navigation challenge.</p>\n<h2 id=\"the-challenge\">The Challenge</h2>\n<p>Teams had to build robots that could:\n- Navigate a maze autonomously\n- Avoid dynamic obstacles\n- Reach the goal in under 3 minutes</p>\n<h2 id=\"winning-solutions\">Winning Solutions</h2>\n<h3 id=\"first-place-team-bolt\">🥇 First Place: Team Bolt</h3>\n<p><strong>LIDAR + SLAM Implementation</strong></p>\n<div class=\"highlight\"><pre><span></span><code><span class=\"c1\">// Core navigation algorithm</span>\n<span class=\"kt\">void</span><span class=\"w\"> </span><span class=\"nf\">navigate</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span>\n<span class=\"w\">    </span><span class=\"n\">updateLidarScan</span><span class=\"p\">();</span>\n<span class=\"w\">    </span><span class=\"n\">buildOccupancyGrid</span><span class=\"p\">();</span>\n\n<span class=\"w\">    </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">pathBlocked</span><span class=\"p\">())</span><span class=\"w\"> </span><span class=\"p\">{</span>\n<span class=\"w\">        </span><span class=\"n\">replanPath</span><span class=\"p\">();</span>\n<span class=\"w\">    </span><span class=\"p\">}</span>\n\n<span class=\"w\">    </span><span class=\"n\">moveTowardGoal</span><span class=\"p\">();</span>\n<span class=\"p\">}</span>\n</code></pre></div>\n\n<p>Team Bolt's innovative use of SLAM (Simultaneous Localization and Mapping) with a $150 LIDAR sensor impressed all the judges.</p>\n<h3 id=\"second-place-team-phoenix\">🥈 Second Place: Team Phoenix</h3>\n<p><strong>Computer Vision + IMU</strong></p>\n<p>Used dual cameras for stereo vision depth perception combined with precise IMU tracking.</p>\n<h3 id=\"third-place-team-dynamo\">🥉 Third Place: Team Dynamo</h3>\n<p><strong>Ultrasonic Sensor Array</strong></p>\n<p>Proved that simple solutions can be highly effective with their 8-sensor ultrasonic setup and clever path-finding algorithm.</p>\n<h2 id=\"next-competition\">Next Competition</h2>\n<p>Mark your calendars! Our <strong>Winter Battle Bots</strong> competition is scheduled for December 15th. Start designing those combat robots!</p>",
+    "metadata": {
+      "title": "Summer Robot Competition Results",
+      "date": "2025-07-28",
+      "card-graphic-builtin": "award",
+      "card-text": "AWARD",
+      "excerpt": "Congratulations to Team Bolt for winning first place in our summer autonomous navigation challenge with their innovative LIDAR solution."
+    }
+  },
+  {
+    "id": "2025-07-25-orientation",
+    "title": "New Member Orientation",
+    "date": "2025-07-25",
+    "emoji": "NEWS",
+    "card_text": "HELLO",
+    "card_graphic_custom": null,
+    "card_graphic_builtin": "learn",
+    "excerpt": "Join us this Saturday for orientation covering shop safety, tool usage, and project guidelines. Perfect for newcomers to our community.",
+    "content": "<h1 id=\"welcome-new-members\">Welcome New Members!</h1>\n<p>This Saturday we're hosting our monthly <strong>New Member Orientation</strong> - perfect for anyone just joining our robotics community.</p>\n<h2 id=\"what-well-cover\">What We'll Cover</h2>\n<h3 id=\"shop-safety-required\">Shop Safety (Required)</h3>\n<ul>\n<li>Personal protective equipment</li>\n<li>Machine operation protocols</li>\n<li>Emergency procedures</li>\n</ul>\n<h3 id=\"tool-usage-training\">Tool Usage Training</h3>\n<ul>\n<li>3D printers and filament types</li>\n<li>Soldering station best practices</li>\n<li>Electronics workbench setup</li>\n</ul>\n<h3 id=\"community-guidelines\">Community Guidelines</h3>\n<ul>\n<li>Project sharing and collaboration</li>\n<li>Slack communication channels</li>\n<li>Workshop scheduling system</li>\n</ul>\n<h2 id=\"code-of-conduct-highlights\">Code of Conduct Highlights</h2>\n<p>We maintain a collaborative, inclusive environment:</p>\n<div class=\"highlight\"><pre><span></span><code><span class=\"gh\"># Our Core Values</span>\n<span class=\"k\">1.</span> <span class=\"gs\">**Learn Together**</span> - Share knowledge freely\n<span class=\"k\">2.</span> <span class=\"gs\">**Build Safely**</span> - Safety first, always\n<span class=\"k\">3.</span> <span class=\"gs\">**Respect Others**</span> - Everyone&#39;s learning journey is valid\n<span class=\"k\">4.</span> <span class=\"gs\">**Have Fun**</span> - We&#39;re here because we love robotics!\n</code></pre></div>\n\n<h2 id=\"getting-started-projects\">Getting Started Projects</h2>\n<p>New members often start with:</p>\n<ul>\n<li><strong>Arduino basics</strong>: LED blinkers and sensor reading</li>\n<li><strong>3D printing</strong>: Design your first custom bracket</li>\n<li><strong>Collaborative projects</strong>: Join an existing team</li>\n</ul>\n<h2 id=\"rsvp-required\">RSVP Required</h2>\n<p>Space is limited to 15 people. Please RSVP in the <code>#general</code> Slack channel or email info@bostonrobothackers.org.</p>\n<p><strong>When</strong>: Saturday, July 27th at 2:00 PM<br />\n<strong>Where</strong>: Main workshop area<br />\n<strong>Duration</strong>: ~2 hours</p>\n<p>Looking forward to meeting everyone!</p>",
+    "metadata": {
+      "title": "New Member Orientation",
+      "date": "2025-07-25",
+      "card-graphic-builtin": "learn",
+      "card-text": "HELLO",
+      "excerpt": "Join us this Saturday for orientation covering shop safety, tool usage, and project guidelines. Perfect for newcomers to our community."
+    }
+  }
+]

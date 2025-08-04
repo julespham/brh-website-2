@@ -1,0 +1,17 @@
+{
+  "active_theme": "tight",
+  "themes": {
+    "tailwind": {
+      "name": "Tailwind Theme",
+      "path": "themes/tailwind"
+    },
+    "tight": {
+      "name": "Tight Theme",
+      "path": "themes/tight"
+    },
+    "classic": {
+      "name": "Classic CSS Theme",
+      "path": "themes/classic"
+    }
+  }
+}

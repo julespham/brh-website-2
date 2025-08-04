@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Robot Hackers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'primary': '#2563eb',
+          'secondary': '#dc2626', 
+          'accent': '#f59e0b',
+          'text-dark': '#111827',
+          'text-gray': '#6b7280',
+          'text-light': '#9ca3af',
+          'bg-gray': '#f9fafb',
+          'border-color': '#e5e7eb'
+        },
+        fontFamily: {
+          'telex': ['Telex', 'sans-serif'],
+          'system': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+        },
+        maxWidth: {
+          'container': '1200px'
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* Base image styling - shared by all image types */
+  .image-base {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem; /* 12px rounded corners */
+    overflow: hidden;
+    background-size: cover, contain;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+  }
+  
+  /* Square images (80px height) - for cards */
+  .image-square {
+    height: 5rem; /* 80px */
+    aspect-ratio: 1 / 1;
+    background: 
+      linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)),
+      url('images/placeholder.png'); /* fallback */
+  }
+  
+  /* Rectangular images (flexible width, shorter height) - for news */
+  .image-rectangle {
+    min-height: 7rem; /* 112px */
+    background: 
+      linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)),
+      url('images/placeholder.png'); /* fallback */
+  }
+  
+  /* Built-in image types - square versions for cards */
+  .image-square.builtin-tools { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/tools-square.png'); }
+  .image-square.builtin-award { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/award-square.png'); }
+  .image-square.builtin-learn { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/learn-square.png'); }
+  .image-square.builtin-robot { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/robot-square.png'); }
+  .image-square.builtin-network { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/network-square.png'); }
+  .image-square.builtin-code { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/code-square.png'); }
+  .image-square.builtin-team { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/team-square.png'); }
+  .image-square.builtin-build { background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/build-square.png'); }
+  
+  /* Built-in image types - rectangular versions for news */
+  .image-rectangle.builtin-tools { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/tools-rect.png'); }
+  .image-rectangle.builtin-award { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/award-rect.png'); }
+  .image-rectangle.builtin-learn { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/learn-rect.png'); }
+  .image-rectangle.builtin-robot { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/robot-rect.png'); }
+  .image-rectangle.builtin-network { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/network-rect.png'); }
+  .image-rectangle.builtin-code { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/code-rect.png'); }
+  .image-rectangle.builtin-team { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/team-rect.png'); }
+  .image-rectangle.builtin-build { background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(245, 158, 11, 0.4)), url('images/builtin/build-rect.png'); }
+  
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .max-w-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .news-card-mobile {
+      grid-template-columns: 1fr !important;
+    }
+    
+    .news-image-mobile {
+      height: 120px;
+    }
+  }
+</style>
+</head>
+<body class="font-system bg-bg-gray text-text-dark leading-normal text-base m-0 p-0">
+    <!-- Modern Header -->
+    <header class="bg-white border-b border-border-color shadow-sm sticky top-0 z-50">
+        <div class="max-w-container mx-auto px-6 py-4 flex items-center gap-8">
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <img src="images/robot-logo.png" alt="Boston Robot Hackers Logo" class="w-12 h-12 rounded-lg shadow-md shadow-primary/20">
+                <div>
+                    <h1 class="font-telex text-2xl font-normal text-text-dark leading-tight">Boston Robot Hackers</h1>
+                    <p class="text-sm text-text-gray font-medium">Innovation through collaboration</p>
+                </div>
+            </div>
+            <nav class="ml-auto">
+                <ul class="flex gap-6 list-none">
+                    <li><a href="#home" class="text-text-gray no-underline font-medium text-base hover:text-primary transition-colors duration-200">Home</a></li>
+                    <li><a href="#meetings" class="text-text-gray no-underline font-medium text-base hover:text-primary transition-colors duration-200">Meetings</a></li>
+                    <li><a href="#projects" class="text-text-gray no-underline font-medium text-base hover:text-primary transition-colors duration-200">Projects</a></li>
+                    <li><a href="members.html" class="text-text-gray no-underline font-medium text-base hover:text-primary transition-colors duration-200">Members</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="max-w-container mx-auto px-6">
+        <!-- Hero Section -->
+        <section class="py-8 text-center bg-white my-4 rounded-xl shadow-sm">
+            <h2 class="font-telex text-4xl font-normal text-text-dark mb-4 leading-tight">Building Tomorrow's Robots Today</h2>
+            <p class="text-lg text-text-gray max-w-3xl mx-auto leading-normal">Boston's premier robotics community where engineers, makers, and innovators come together to push the boundaries of autonomous systems and artificial intelligence.</p>
+        </section>
+
+        <main class="py-4 pb-8">
+            <!-- What's New Section -->
+            <section class="mb-8">
+                <div class="mb-4">
+                    <h3 class="font-telex text-2xl font-normal text-text-dark mb-1 flex items-center gap-3">📰 What's New</h3>
+                    <p class="text-base text-text-gray">Latest updates from our community</p>
+                </div>
+                <div class="grid gap-4" id="whats-new-content">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm grid md:grid-cols-[160px_1fr] hover:-translate-y-1 hover:shadow-md transition-all duration-200 news-card-mobile">
+    <div class="image-base image-rectangle flex items-center justify-center text-white font-bold text-sm tracking-wide news-image-mobile builtin-learn">
+        <span class="bg-black/60 px-3 py-1 rounded text-xs font-bold tracking-wide">HELLO</span>
+    </div>
+    <div class="p-4">
+        <h4 class="font-telex text-lg font-normal text-text-dark mb-2 leading-tight">Test X</h4>
+        <p class="text-sm text-text-gray leading-normal mb-2">yada yada yada</p>
+        <div class="text-xs text-text-light font-medium">August 01, 2025</div>
+    </div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden shadow-sm grid md:grid-cols-[160px_1fr] hover:-translate-y-1 hover:shadow-md transition-all duration-200 news-card-mobile">
+    <div class="image-base image-rectangle flex items-center justify-center text-white font-bold text-sm tracking-wide news-image-mobile builtin-tools">
+        <span class="bg-black/60 px-3 py-1 rounded text-xs font-bold tracking-wide">TOOLS</span>
+    </div>
+    <div class="p-4">
+        <h4 class="font-telex text-lg font-normal text-text-dark mb-2 leading-tight">New CNC Mill Installation Complete</h4>
+        <p class="text-sm text-text-gray leading-normal mb-2">Our new 3-axis CNC mill is now operational and available for member projects. Safety training sessions begin next week.</p>
+        <div class="text-xs text-text-light font-medium">August 01, 2025</div>
+    </div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden shadow-sm grid md:grid-cols-[160px_1fr] hover:-translate-y-1 hover:shadow-md transition-all duration-200 news-card-mobile">
+    <div class="image-base image-rectangle flex items-center justify-center text-white font-bold text-sm tracking-wide news-image-mobile builtin-award">
+        <span class="bg-black/60 px-3 py-1 rounded text-xs font-bold tracking-wide">AWARD</span>
+    </div>
+    <div class="p-4">
+        <h4 class="font-telex text-lg font-normal text-text-dark mb-2 leading-tight">Summer Robot Competition Results</h4>
+        <p class="text-sm text-text-gray leading-normal mb-2">Congratulations to Team Bolt for winning first place in our summer autonomous navigation challenge with their innovative LIDAR solution.</p>
+        <div class="text-xs text-text-light font-medium">July 28, 2025</div>
+    </div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden shadow-sm grid md:grid-cols-[160px_1fr] hover:-translate-y-1 hover:shadow-md transition-all duration-200 news-card-mobile">
+    <div class="image-base image-rectangle flex items-center justify-center text-white font-bold text-sm tracking-wide news-image-mobile builtin-learn">
+        <span class="bg-black/60 px-3 py-1 rounded text-xs font-bold tracking-wide">HELLO</span>
+    </div>
+    <div class="p-4">
+        <h4 class="font-telex text-lg font-normal text-text-dark mb-2 leading-tight">New Member Orientation</h4>
+        <p class="text-sm text-text-gray leading-normal mb-2">Join us this Saturday for orientation covering shop safety, tool usage, and project guidelines. Perfect for newcomers to our community.</p>
+        <div class="text-xs text-text-light font-medium">July 25, 2025</div>
+    </div>
+</div>
+                </div>
+                <button class="bg-primary text-white border-none py-2 px-6 rounded-lg text-sm font-semibold cursor-pointer transition-all duration-200 mt-4 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-md hover:shadow-primary/25" onclick="loadMoreNews()">View All Updates</button>
+            </section>
+
+            <!-- Meetings Section -->
+            <section class="mb-8">
+                <div class="mb-4">
+                    <h3 class="font-telex text-2xl font-normal text-text-dark mb-1 flex items-center gap-3">🤝 Meetings</h3>
+                    <p class="text-base text-text-gray">Join our regular gatherings</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                        <div class="image-base image-square flex items-center justify-center text-white font-bold text-sm tracking-wide">HACK</div>
+                        <div class="p-4">
+                            <h4 class="font-telex text-base font-normal text-text-dark mb-1 leading-tight">Weekly Hack Night</h4>
+                            <p class="text-sm text-text-gray leading-normal mb-2">Join us every Thursday for collaborative project work, knowledge sharing, and hands-on robotics development.</p>
+                            <div class="text-xs text-text-light font-medium">Every Thursday • 7:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                        <div class="image-base image-square flex items-center justify-center text-white font-bold text-sm tracking-wide">SHOW</div>
+                        <div class="p-4">
+                            <h4 class="font-telex text-base font-normal text-text-dark mb-1 leading-tight">Monthly Showcase</h4>
+                            <p class="text-sm text-text-gray leading-normal mb-2">Present your latest builds, receive expert feedback, and discover what other makers are creating.</p>
+                            <div class="text-xs text-text-light font-medium">First Saturday • 2:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                        <div class="image-base image-square flex items-center justify-center text-white font-bold text-sm tracking-wide">LEARN</div>
+                        <div class="p-4">
+                            <h4 class="font-telex text-base font-normal text-text-dark mb-1 leading-tight">Workshop Series</h4>
+                            <p class="text-sm text-text-gray leading-normal mb-2">Deep-dive learning sessions covering everything from Arduino basics to advanced machine learning integration.</p>
+                            <div class="text-xs text-text-light font-medium">Weekends • Various Times</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="mb-8">
+                <div class="mb-4">
+                    <h3 class="font-telex text-2xl font-normal text-text-dark mb-1 flex items-center gap-3">🛠️ Projects</h3>
+                    <p class="text-base text-text-gray">Current community initiatives</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                        <div class="image-base image-square flex items-center justify-center text-white font-bold text-sm tracking-wide">ROBOT</div>
+                        <div class="p-4">
+                            <h4 class="font-telex text-base font-normal text-text-dark mb-1 leading-tight">Autonomous Delivery Bot</h4>
+                            <p class="text-sm text-text-gray leading-normal mb-2">Community project building a robot that can navigate indoor spaces and deliver items between floors using advanced pathfinding algorithms.</p>
+                            <div class="text-xs text-text-light font-medium">Status: Active Development</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                        <div class="image-base image-square flex items-center justify-center text-white font-bold text-sm tracking-wide">NETWORK</div>
+                        <div class="p-4">
+                            <h4 class="font-telex text-base font-normal text-text-dark mb-1 leading-tight">IoT Sensor Network</h4>
+                            <p class="text-sm text-text-gray leading-normal mb-2">Creating a distributed mesh network of environmental sensors to monitor conditions and optimize workflows throughout the makerspace.</p>
+                            <div class="text-xs text-text-light font-medium">Status: Testing Phase</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                        <div class="image-base image-square flex items-center justify-center text-white font-bold text-sm tracking-wide">ARM</div>
+                        <div class="p-4">
+                            <h4 class="font-telex text-base font-normal text-text-dark mb-1 leading-tight">Open Source Robot Arm</h4>
+                            <p class="text-sm text-text-gray leading-normal mb-2">Developing an accessible, high-precision robotic arm controller that makes industrial automation available to the maker community.</p>
+                            <div class="text-xs text-text-light font-medium">Status: Beta Release</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="bg-primary text-white border-none py-2 px-6 rounded-lg text-sm font-semibold cursor-pointer transition-all duration-200 mt-4 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-md hover:shadow-primary/25" onclick="loadMoreProjects()">Explore All Projects</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-text-dark text-text-light py-8 mt-8 text-center">
+        <div class="max-w-container mx-auto px-6">
+            <p class="text-base">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
