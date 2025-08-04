@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Robot Hackers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<style>
+  /* Custom image styling that works with Bootstrap */
+  .image-base {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background-size: cover, contain;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+  }
+  
+  /* Square images - for cards */
+  .image-square {
+    height: 80px;
+    width: 80px;
+    background: 
+      linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)),
+      url('images/placeholder.png');
+  }
+  
+  /* Rectangular images - for news */
+  .image-rectangle {
+    height: 112px;
+    width: 160px;
+    background: 
+      linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)),
+      url('images/placeholder.png');
+  }
+  
+  
+  /* Bootstrap-specific adjustments */
+  .navbar-brand img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .hero-section {
+    max-width: 48rem;
+  }
+  
+  /* Responsive news cards */
+  @media (min-width: 768px) {
+    .news-card-body {
+      flex-direction: row;
+    }
+    .news-image-wrapper {
+      flex-shrink: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .news-card-body {
+      flex-direction: column;
+    }
+    .image-rectangle {
+      width: 100%;
+      height: 120px;
+    }
+  }
+</style>
+</head>
+<body class="bg-light">
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="images/robot-logo.png" alt="Boston Robot Hackers Logo" class="me-3 rounded shadow-sm">
+                <div>
+                    <div class="font-telex h4 mb-0 fw-normal">Boston Robot Hackers</div>
+                    <div class="small text-muted fw-medium">Innovation through collaboration</div>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#meetings" class="nav-link">Meetings</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="members.html" class="nav-link">Members</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <!-- Hero Section -->
+        <section class="bg-white text-center py-5 my-4 rounded shadow-sm">
+            <div class="hero-section mx-auto">
+                <h1 class="font-telex display-4 fw-normal text-dark mb-4">Building Tomorrow's Robots Today</h1>
+                <p class="lead text-muted mx-auto">Boston's premier robotics community where engineers, makers, and innovators come together to push the boundaries of autonomous systems and artificial intelligence.</p>
+            </div>
+        </section>
+
+        <main class="py-4 pb-5">
+            <!-- What's New Section -->
+            <section class="mb-5">
+                <div class="mb-4">
+                    <h2 class="font-telex h3 fw-normal text-dark mb-2 d-flex align-items-center">
+                        <span class="me-2">📰</span>What's New
+                    </h2>
+                    <p class="text-muted">Latest updates from our community</p>
+                </div>
+                <div class="row g-4" id="whats-new-content">
+                    <div class="col-12">
+    <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex">
+            <div class="news-image-wrapper">
+                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold">
+                    <span class="badge bg-dark">NEWS</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 ps-4">
+                <h5 class="font-telex card-title h5 fw-normal">Test X</h5>
+                <p class="card-text text-muted">yada yada yada</p>
+                <div class="small text-muted fw-medium">August 01, 2025</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex">
+            <div class="news-image-wrapper">
+                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold" style="background-image: url('images/tools-square.png'); background-size: cover; background-position: center;">
+                    <span class="badge bg-dark">TOOLS</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 ps-4">
+                <h5 class="font-telex card-title h5 fw-normal">New CNC Mill Installation Complete</h5>
+                <p class="card-text text-muted">Our new 3-axis CNC mill is now operational and available for member projects. Safety training sessions begin next week.</p>
+                <div class="small text-muted fw-medium">August 01, 2025</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex">
+            <div class="news-image-wrapper">
+                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold" style="background-image: url('images/award-square.png'); background-size: cover; background-position: center;">
+                    <span class="badge bg-dark">AWARD</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 ps-4">
+                <h5 class="font-telex card-title h5 fw-normal">Summer Robot Competition Results</h5>
+                <p class="card-text text-muted">Congratulations to Team Bolt for winning first place in our summer autonomous navigation challenge with their innovative LIDAR solution.</p>
+                <div class="small text-muted fw-medium">July 28, 2025</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex">
+            <div class="news-image-wrapper">
+                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold">
+                    <span class="badge bg-dark">NEWS</span>
+                </div>
+            </div>
+            <div class="flex-grow-1 ps-4">
+                <h5 class="font-telex card-title h5 fw-normal">New Member Orientation</h5>
+                <p class="card-text text-muted">Join us this Saturday for orientation covering shop safety, tool usage, and project guidelines. Perfect for newcomers to our community.</p>
+                <div class="small text-muted fw-medium">July 25, 2025</div>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+                <button class="btn btn-primary mt-3" onclick="loadMoreNews()">View All Updates</button>
+            </section>
+
+            <!-- Meetings Section -->
+            <section class="mb-5">
+                <div class="mb-4">
+                    <h2 class="font-telex h3 fw-normal text-dark mb-2 d-flex align-items-center">
+                        <span class="me-2">🤝</span>Meetings
+                    </h2>
+                    <p class="text-muted">Join our regular gatherings</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">HACK</div>
+                            <div class="card-body">
+                                <h5 class="font-telex card-title h6 fw-normal">Weekly Hack Night</h5>
+                                <p class="card-text text-muted small">Join us every Thursday for collaborative project work, knowledge sharing, and hands-on robotics development.</p>
+                                <div class="small text-muted fw-medium">Every Thursday • 7:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">SHOW</div>
+                            <div class="card-body">
+                                <h5 class="font-telex card-title h6 fw-normal">Monthly Showcase</h5>
+                                <p class="card-text text-muted small">Present your latest builds, receive expert feedback, and discover what other makers are creating.</p>
+                                <div class="small text-muted fw-medium">First Saturday • 2:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">LEARN</div>
+                            <div class="card-body">
+                                <h5 class="font-telex card-title h6 fw-normal">Workshop Series</h5>
+                                <p class="card-text text-muted small">Deep-dive learning sessions covering everything from Arduino basics to advanced machine learning integration.</p>
+                                <div class="small text-muted fw-medium">Weekends • Various Times</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="mb-5">
+                <div class="mb-4">
+                    <h2 class="font-telex h3 fw-normal text-dark mb-2 d-flex align-items-center">
+                        <span class="me-2">🛠️</span>Projects
+                    </h2>
+                    <p class="text-muted">Current community initiatives</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">ROBOT</div>
+                            <div class="card-body">
+                                <h5 class="font-telex card-title h6 fw-normal">Autonomous Delivery Bot</h5>
+                                <p class="card-text text-muted small">Community project building a robot that can navigate indoor spaces and deliver items between floors using advanced pathfinding algorithms.</p>
+                                <div class="small text-muted fw-medium">Status: Active Development</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">NETWORK</div>
+                            <div class="card-body">
+                                <h5 class="font-telex card-title h6 fw-normal">IoT Sensor Network</h5>
+                                <p class="card-text text-muted small">Creating a distributed mesh network of environmental sensors to monitor conditions and optimize workflows throughout the makerspace.</p>
+                                <div class="small text-muted fw-medium">Status: Testing Phase</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">ARM</div>
+                            <div class="card-body">
+                                <h5 class="font-telex card-title h6 fw-normal">Open Source Robot Arm</h5>
+                                <p class="card-text text-muted small">Developing an accessible, high-precision robotic arm controller that makes industrial automation available to the maker community.</p>
+                                <div class="small text-muted fw-medium">Status: Beta Release</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-3" onclick="loadMoreProjects()">Explore All Projects</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-5 mt-5">
+        <div class="container-fluid">
+            <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

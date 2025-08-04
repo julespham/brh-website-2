@@ -6,6 +6,7 @@ Uses template-based architecture with themes.
 
 import json
 import os
+import shutil
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Any
@@ -19,12 +20,11 @@ from pygments.formatters import HtmlFormatter
 class WebsiteBuilder:
     def __init__(self):
         self.root_dir = Path("..")  # Build script is now in build/ subdirectory
-        self.src_dir = self.root_dir / "src"
-        self.templates_dir = self.src_dir / "templates"
-        self.themes_dir = self.src_dir / "themes"
+        self.templates_dir = self.root_dir / "templates"
+        self.themes_dir = self.root_dir / "themes"
         self.config_dir = self.root_dir / "config"
-        self.content_dir = self.src_dir / "content"
-        self.dist_dir = self.root_dir / "dist"
+        self.content_dir = self.root_dir / "content"
+        self.dist_dir = self.root_dir / "output"
         
         # Create dist directory if it doesn't exist
         self.dist_dir.mkdir(exist_ok=True)
@@ -129,10 +129,8 @@ class WebsiteBuilder:
                 'id': file_path.stem,
                 'title': metadata.get('title', 'Untitled'),
                 'date': metadata.get('date'),
-                'emoji': metadata.get('emoji', 'NEWS'),  # Legacy support
-                'card_text': metadata.get('card-text', metadata.get('emoji', 'NEWS')),
-                'card_graphic_custom': metadata.get('card-graphic-custom'),
-                'card_graphic_builtin': metadata.get('card-graphic-builtin'),
+                'image': metadata.get('image', ''),  # URL to 512x512 square image (scaled with CSS as needed)
+                'text': metadata.get('text', metadata.get('emoji', 'NEWS')),  # Simple text overlay
                 'excerpt': metadata.get('excerpt', ''),
                 'content': html_content,
                 'metadata': metadata
@@ -158,16 +156,14 @@ class WebsiteBuilder:
         
         cards_html = []
         for post in posts:
-            # Determine image classes including builtin type
+            # Use basic image classes
             image_classes = self.active_theme['news_image_classes']
-            if post.get('card_graphic_builtin'):
-                builtin_type = post['card_graphic_builtin']
-                image_classes += f' builtin-{builtin_type}'
             
             card_html = template.render(
                 title=post['title'],
                 excerpt=post['excerpt'],
-                card_text=post['card_text'],
+                text=post['text'],
+                image=post['image'],
                 formatted_date=self.format_date(post['date']),
                 theme=self.active_theme,
                 image_classes=image_classes
@@ -259,10 +255,33 @@ class WebsiteBuilder:
         
         print(f"Generated {output_file}")
     
+    def copy_assets(self):
+        """Copy static assets to output directory."""
+        # Copy images
+        images_src = self.root_dir / "images"
+        images_dest = self.dist_dir / "images"
+        if images_src.exists():
+            if images_dest.exists():
+                shutil.rmtree(images_dest)
+            shutil.copytree(images_src, images_dest)
+            print(f"Copied images to {images_dest}")
+        
+        # Copy scripts
+        scripts_src = self.root_dir / "scripts"  
+        scripts_dest = self.dist_dir / "scripts"
+        if scripts_src.exists():
+            if scripts_dest.exists():
+                shutil.rmtree(scripts_dest)
+            shutil.copytree(scripts_src, scripts_dest)
+            print(f"Copied scripts to {scripts_dest}")
+    
     def build(self):
         """Main build function."""
         print("Building Boston Robot Hackers website...")
         print(f"Using theme: {self.theme_config.get('active_theme', 'tailwind')}")
+        
+        # Copy static assets
+        self.copy_assets()
         
         # Generate syntax highlighting CSS
         self.generate_pygments_css('default')
