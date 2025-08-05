@@ -1,18 +1,6 @@
 {
   "active_theme": "squeeze",
   "themes": {
-    "tailwind": {
-      "name": "Tailwind Theme",
-      "path": "themes/tailwind"
-    },
-    "tight": {
-      "name": "Tight Theme",
-      "path": "themes/tight"
-    },
-    "classic": {
-      "name": "Classic CSS Theme",
-      "path": "themes/classic"
-    },
     "bootstrap": {
       "name": "Bootstrap Theme",
       "path": "themes/bootstrap"

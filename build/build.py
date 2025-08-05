@@ -376,6 +376,23 @@ class WebsiteBuilder:
         output_file.write_text(html_content, encoding='utf-8')
         print(f"Built projects.html with {len(projects)} projects")
     
+    def render_project_cards_for_home(self, projects):
+        """Render project cards for the home page display."""
+        template = self.jinja_env.get_template('project-card.html')
+        cards_html = []
+        
+        for project in projects:
+            card_html = template.render(
+                title=project['title'],
+                text=project['text'],
+                excerpt=project['excerpt'],
+                status=project['metadata'].get('status', 'Unknown'),
+                theme=self.active_theme
+            )
+            cards_html.append(card_html)
+        
+        return '\n'.join(cards_html)
+    
     def build_index(self):
         """Build the main index.html file."""
         # Generate news content
@@ -383,6 +400,10 @@ class WebsiteBuilder:
         
         # Generate hero content
         hero_content = self.build_hero_content()
+        
+        # Generate project cards for home page
+        projects = self.get_all_projects()
+        projects_content = self.render_project_cards_for_home(projects)
         
         # Load and render the main template
         template = self.jinja_env.get_template('index.html')
@@ -392,7 +413,8 @@ class WebsiteBuilder:
             site=self.site_config,
             theme=self.active_theme,
             news_content=news_content,
-            hero=hero_content
+            hero=hero_content,
+            projects_content=projects_content
         )
         
         # Write the generated HTML

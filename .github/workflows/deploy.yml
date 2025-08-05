@@ -31,13 +31,11 @@ jobs:
     - name: Set up Python
       run: uv python install 3.12
 
-    - name: Install dependencies
-      run: uv sync
-
     - name: Build website
       run: |
          cd build
-         uv run python build.py      
+         uv sync
+         uv run python build.py
 
     - name: Setup Pages
       uses: actions/configure-pages@v4

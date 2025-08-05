@@ -48,7 +48,7 @@
             <section class="{{ theme.section_classes }}">
                 <div class="{{ theme.section_header_classes }}">
                     <h2 class="font-telex {{ theme.section_title_classes }}">
-                        <span class="me-2">{{ site.news_emoji }}</span>{{ site.news_title }} <a href="whatsnew.html" class="text-primary small"> (see all)</a>
+                        <span class="me-2">{{ site.news_emoji }}</span>{{ site.news_title }}&nbsp;<a href="whatsnew.html" class="text-primary small">(see all)</a>
                     </h2>
                     <p class="{{ theme.section_subtitle_classes }}">{{ site.news_subtitle }}</p>
                 </div>
@@ -67,36 +67,7 @@
                     <p class="{{ theme.section_subtitle_classes }}">{{ site.projects_subtitle }}</p>
                 </div>
                 <div class="{{ theme.card_grid_classes }}">
-                    <div class="{{ theme.card_classes }}">
-                        <div class="{{ theme.card_inner_classes }}">
-                            <div class="{{ theme.card_image_classes }}">ROBOT</div>
-                            <div class="{{ theme.card_content_classes }}">
-                                <h5 class="font-telex {{ theme.card_title_classes }}">Autonomous Delivery Bot</h5>
-                                <p class="{{ theme.card_text_classes }}">Community project building a robot that can navigate indoor spaces and deliver items between floors using advanced pathfinding algorithms.</p>
-                                <div class="{{ theme.card_meta_classes }}">Status: Active Development</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="{{ theme.card_classes }}">
-                        <div class="{{ theme.card_inner_classes }}">
-                            <div class="{{ theme.card_image_classes }}">NETWORK</div>
-                            <div class="{{ theme.card_content_classes }}">
-                                <h5 class="font-telex {{ theme.card_title_classes }}">IoT Sensor Network</h5>
-                                <p class="{{ theme.card_text_classes }}">Creating a distributed mesh network of environmental sensors to monitor conditions and optimize workflows throughout the makerspace.</p>
-                                <div class="{{ theme.card_meta_classes }}">Status: Testing Phase</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="{{ theme.card_classes }}">
-                        <div class="{{ theme.card_inner_classes }}">
-                            <div class="{{ theme.card_image_classes }}">ARM</div>
-                            <div class="{{ theme.card_content_classes }}">
-                                <h5 class="font-telex {{ theme.card_title_classes }}">Open Source Robot Arm</h5>
-                                <p class="{{ theme.card_text_classes }}">Developing an accessible, high-precision robotic arm controller that makes industrial automation available to the maker community.</p>
-                                <div class="{{ theme.card_meta_classes }}">Status: Beta Release</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{ projects_content|safe }}
                 </div>
             </section>
         </main>
