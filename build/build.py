@@ -172,14 +172,15 @@ class WebsiteBuilder:
         
         return '\n'.join(cards_html)
     
-    def build_hero_content(self) -> Dict[str, Any]:
-        """Build hero content from markdown file."""
-        hero_file = self.content_dir / 'hero.md'
+    def build_hero_content(self, page_name: str = 'index') -> Dict[str, Any]:
+        """Build hero content from page-specific markdown file."""
+        hero_file = self.content_dir / 'heroes' / f'{page_name}.md'
         if not hero_file.exists():
-            print(f"Warning: {hero_file} not found, using defaults")
+            print(f"Warning: {hero_file} not found, leaving hero section blank")
             return {
-                'hero_title': 'Boston Robot Hackers',
-                'hero_subtitle': 'Building the future, one robot at a time.'
+                'hero_title': '',
+                'hero_subtitle': '',
+                'hero_content': ''
             }
         
         # Set up markdown processor
@@ -194,17 +195,19 @@ class WebsiteBuilder:
                 'hero_content': hero_data['content']
             }
         
+        print(f"Warning: Failed to process {hero_file}, leaving hero section blank")
         return {
-            'hero_title': 'Boston Robot Hackers',
-            'hero_subtitle': 'Building the future, one robot at a time.'
+            'hero_title': '',
+            'hero_subtitle': '',
+            'hero_content': ''
         }
 
-    def build_whatsnew(self) -> str:
-        """Build the What's New section from markdown files."""
+    def get_all_news_posts(self):
+        """Get all news posts from markdown files."""
         whatsnew_dir = self.content_dir / 'news'
         if not whatsnew_dir.exists():
             print(f"Warning: {whatsnew_dir} directory not found")
-            return ""
+            return []
         
         # Set up markdown processor
         md_processor = self.setup_markdown_processor()
@@ -218,17 +221,160 @@ class WebsiteBuilder:
         
         # Sort by date (newest first) 
         posts.sort(key=lambda x: x['date'], reverse=True)
+        return posts
+
+    def build_whatsnew(self) -> str:
+        """Build the What's New section from markdown files (highlighted only)."""
+        posts = self.get_all_news_posts()
+        
+        # Filter only highlighted posts for home page
+        highlighted_posts = [post for post in posts if post['metadata'].get('highlight', False)]
         
         # Render news cards
-        news_html = self.render_news_cards(posts)
+        news_html = self.render_news_cards(highlighted_posts)
         
         # Save JSON for potential future use
         output_file = self.dist_dir / 'whatsnew.json'
         with open(output_file, 'w') as f:
             json.dump(posts, f, indent=2, ensure_ascii=False)
         
-        print(f"Generated {len(posts)} posts")
+        print(f"Generated {len(highlighted_posts)} highlighted posts from {len(posts)} total")
         return news_html
+    
+    def render_compact_news_cards(self, posts):
+        """Render compact news cards for the full news page."""
+        template = self.jinja_env.get_template('compact-news-card.html')
+        cards_html = []
+        
+        for post in posts:
+            # Format the date
+            try:
+                if isinstance(post['date'], str):
+                    date_obj = datetime.fromisoformat(post['date']).date()
+                else:
+                    date_obj = post['date']
+                formatted_date = date_obj.strftime("%B %d, %Y")
+            except:
+                formatted_date = str(post['date'])
+            
+            # Render the card
+            card_html = template.render(
+                title=post['title'],
+                excerpt=post['excerpt'],
+                formatted_date=formatted_date,
+                image=post['image'],
+                text=post['text']
+            )
+            cards_html.append(card_html)
+        
+        return '\n'.join(cards_html)
+    
+    def build_news_page(self):
+        """Build the whatsnew.html page with all news items."""
+        posts = self.get_all_news_posts()
+        news_content = self.render_compact_news_cards(posts)
+        
+        # Generate hero content for whatsnew page
+        hero_content = self.build_hero_content('whatsnew')
+        
+        # Load and render the whatsnew template
+        template = self.jinja_env.get_template('whatsnew.html')
+        
+        # Render the template with all data
+        html_content = template.render(
+            site=self.site_config,
+            theme=self.active_theme,
+            hero=hero_content,
+            news_content=news_content
+        )
+        
+        # Write to whatsnew.html
+        output_file = self.dist_dir / 'whatsnew.html'
+        output_file.write_text(html_content, encoding='utf-8')
+        print(f"Built whatsnew.html with {len(posts)} posts")
+    
+    def get_all_projects(self):
+        """Get all projects from markdown files."""
+        projects_dir = self.content_dir / 'projects'
+        if not projects_dir.exists():
+            print(f"Warning: {projects_dir} directory not found")
+            return []
+        
+        # Set up markdown processor
+        md_processor = self.setup_markdown_processor()
+        
+        # Process all markdown files
+        projects = []
+        for md_file in projects_dir.glob('*.md'):
+            project_data = self.process_markdown_file(md_file, md_processor)
+            if project_data:
+                projects.append(project_data)
+        
+        # Sort by date (newest first)
+        projects.sort(key=lambda x: x['date'], reverse=True)
+        return projects
+    
+    def render_projects_content(self, projects):
+        """Render projects as full content articles instead of cards."""
+        content_sections = []
+        
+        for project in projects:
+            # Create a full article section for each project
+            section_html = f'''
+            <article class="mb-5 pb-4 border-bottom">
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <div class="text-center">
+                            <img src="{project['image']}" class="rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                            <div class="small fw-bold mt-2">{project['text']}</div>
+                            <div class="badge bg-secondary mt-1">{project['metadata'].get('status', 'Unknown')}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="project-content">
+                            {project['content']}
+                        </div>
+                        <div class="project-meta mt-3 pt-3 border-top">
+                            <div class="row text-muted small">
+                                <div class="col-md-6">
+                                    <strong>Started:</strong> {self.format_date(project['date'])}
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Team:</strong> {project['metadata'].get('members', 'N/A')} members
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            '''
+            content_sections.append(section_html)
+        
+        return '\n'.join(content_sections)
+    
+    def build_projects_page(self):
+        """Build the projects.html page with all projects."""
+        projects = self.get_all_projects()
+        projects_content = self.render_projects_content(projects)
+        
+        # Generate hero content for projects page
+        hero_content = self.build_hero_content('projects')
+        
+        # Load and render the projects template
+        template = self.jinja_env.get_template('projects.html')
+        
+        # Render the template with all data
+        html_content = template.render(
+            site=self.site_config,
+            theme=self.active_theme,
+            hero=hero_content,
+            projects_content=projects_content
+        )
+        
+        # Write to projects.html
+        output_file = self.dist_dir / 'projects.html'
+        output_file.write_text(html_content, encoding='utf-8')
+        print(f"Built projects.html with {len(projects)} projects")
     
     def build_index(self):
         """Build the main index.html file."""
@@ -288,6 +434,12 @@ class WebsiteBuilder:
         
         # Build the main page
         self.build_index()
+        
+        # Build the news page
+        self.build_news_page()
+        
+        # Build the projects page
+        self.build_projects_page()
         
         print("Build complete!")
 

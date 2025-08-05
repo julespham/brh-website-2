@@ -7,7 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
+    <!-- Preload critical images -->
+<link rel="preload" href="images/robot-logo.png" as="image">
+<link rel="preload" href="images/banner-1.png" as="image">
+
+<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <!-- Bootstrap JavaScript Bundle -->
@@ -27,222 +31,234 @@
     background-repeat: no-repeat, no-repeat;
   }
   
-  /* Square images - for cards */
+  /* Smaller, denser images for squeeze theme */
   .image-square {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     background: 
       linear-gradient(135deg, rgba(13, 110, 253, 0.4), rgba(255, 193, 7, 0.4)),
       url('images/placeholder.png');
   }
   
-  /* Rectangular images - for news */
+  /* Compact rectangular images for news */
   .image-rectangle {
-    height: 112px;
-    width: 160px;
+    height: 80px;
+    width: 120px;
     background: 
       linear-gradient(135deg, rgba(220, 53, 69, 0.4), rgba(255, 193, 7, 0.4)),
       url('images/placeholder.png');
   }
   
   
-  /* Bootstrap-specific adjustments */
-  .navbar-brand img {
-    width: 48px;
-    height: 48px;
+  header {
+    height: 204px;
+    display: flex;
+  }
+  
+  .logo {
+    width: 204px;
+    height: 204px;
+    background: black;
+    text-align: center;
+    padding: 2px;
+    flex-shrink: 0;
+  }
+  
+  .logo img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    object-fit: contain;
+  }
+  
+  .banner {
+    flex: 1;
+    background: #1a1a1a url('images/banner-1.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 204px;
+  }
+  
+  .banner h1 {
+    color: white;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px black;
+  }
+  
+  .banner p {
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+  }
+  
+  /* Separate thin navigation bar */
+  .nav-bar-thin {
+    height: 50px;
+    background: black;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-bar-thin .container-fluid {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-bar-thin .navbar-nav {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  .nav-bar-thin .nav-link {
+    font-family: 'Telex', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: white !important;
+    padding: 0.5rem 1.5rem !important;
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+  
+  .nav-bar-thin .nav-link:hover {
+    color: #f59e0b !important;
+    transform: translateY(-1px);
+  }
+  
+  .navbar-toggler {
+    display: none !important;
   }
   
   .hero-section {
-    max-width: 48rem;
+    max-width: 60rem;
   }
   
-  /* Responsive news cards */
-  @media (min-width: 768px) {
-    .news-card-body {
-      flex-direction: row;
-    }
-    .news-image-wrapper {
-      flex-shrink: 0;
-    }
+  /* Auto-sizing hero based on content */
+  .hero {
+    padding: 1.5rem 1rem !important;
+    min-height: auto !important;
   }
   
-  @media (max-width: 767px) {
-    .news-card-body {
-      flex-direction: column;
-    }
-    .image-rectangle {
-      width: 100%;
-      height: 120px;
-    }
+  .hero h1 {
+    margin-bottom: 0.75rem;
   }
+  
+  .hero p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero *:last-child {
+    margin-bottom: 0 !important;
+  }
+  
 </style>
 </head>
-<body class="bg-light">
-    <!-- Bootstrap Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#home">
-                <img src="images/robot-logo.png" alt="Boston Robot Hackers Logo" class="me-3 rounded shadow-sm">
-                <div>
-                    <div class="font-telex h4 mb-0 fw-normal">Boston Robot Hackers</div>
-                    <div class="small text-muted fw-medium">Innovation through collaboration</div>
-                </div>
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#meetings" class="nav-link">Meetings</a></li>
-                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                    <li class="nav-item"><a href="members.html" class="nav-link">Members</a></li>
-                </ul>
+<body class="">
+    <header>
+        <div class="logo">
+            <img src="images/robot-logo.png" alt="Logo">
+        </div>
+        <div class="banner">
+            <div>
+                <h1>Boston Robot Hackers</h1>
+                <p>CONNECT * LEARN * BUILD</p>
             </div>
         </div>
-    </nav>
+    </header>
+    
+    <!-- Separate Thin Navigation Bar -->
+    <div class="nav-bar-thin">
+        <div class="container-fluid">
+            <ul class="navbar-nav mx-auto d-flex flex-row">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#meetings" class="nav-link">Meetings</a></li>
+                <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="members.html" class="nav-link">Members</a></li>
+            </ul>
+        </div>
+    </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid px-2 px-md-3">
         <!-- Hero Section -->
-        <section class="bg-white text-center py-5 my-4 rounded shadow-sm">
+        <section class="hero text-center py-3 my-2 rounded shadow-lg">
             <div class="hero-section mx-auto">
-                <h1 class="font-telex display-4 fw-normal text-dark mb-4">Building Tomorrow's Robots Today</h1>
-                <p class="lead text-muted mx-auto">Boston's premier robotics community where engineers, makers, and innovators come together to push the boundaries of autonomous systems and artificial intelligence.</p>
+                <h1 id="welcome-to-boston-robot-hackers">Welcome To Boston Robot Hackers</h1>
+<p>We are a brand new group of people passionate about robotics. We are hardware and software people, professionals and students, experts and beginners. What we share is that we all want to make connections with like minded folks, learn and share, and build together. The club is Boston based, so that live events either in person or online will focus on the Boston area. Of course members outside of Boston are also welcome (and we have lots from all over the world!) Some of our members have great connections in the robotics industry.</p>
             </div>
         </section>
 
-        <main class="py-4 pb-5">
+        <main class="py-2 pb-3">
             <!-- What's New Section -->
-            <section class="mb-5">
-                <div class="mb-4">
-                    <h2 class="font-telex h3 fw-normal text-dark mb-2 d-flex align-items-center">
-                        <span class="me-2">📰</span>What's New
+            <section class="mb-3">
+                <div class="mb-3">
+                    <h2 class="font-telex h4 fw-normal text-dark mb-1 d-flex align-items-center">
+                        <span class="me-2">📰</span>What's New <a href="whatsnew.html" class="text-primary small"> (see all)</a>
                     </h2>
                     <p class="text-muted">Latest updates from our community</p>
                 </div>
-                <div class="row g-4" id="whats-new-content">
-                    <div class="col-12">
-    <div class="card h-100 shadow-sm border-0">
-        <div class="card-body d-flex">
-            <div class="news-image-wrapper">
-                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold">
-                    <span class="badge bg-dark">NEWS</span>
-                </div>
-            </div>
-            <div class="flex-grow-1 ps-4">
-                <h5 class="font-telex card-title h5 fw-normal">Test X</h5>
-                <p class="card-text text-muted">yada yada yada</p>
-                <div class="small text-muted fw-medium">August 01, 2025</div>
+                <div class="col-12" id="whats-new-content">
+                    <div class="card mb-2" style="transform: scale(0.8); transform-origin: left top; margin-bottom: -20%;">
+    <div class="row g-0">
+        <div class="col-auto">
+            
+            <img src="images/network.png" class="rounded-start" style="width: 120px; height: 120px; object-fit: cover;" alt="">
+            
+            <div class="text-center small fw-bold mt-1" style="width: 120px;">NEWS</div>
+            
+            
+        </div>
+        <div class="col">
+            <div class="card-body py-2">
+                <h5 class="card-title mb-1">First BRH Meeting was great!</h5>
+                <p class="card-text">Just a quick summary of the first meeting!</p>
+                <p class="card-text"><small class="text-muted">August 01, 2025</small></p>
             </div>
         </div>
     </div>
 </div>
-<div class="col-12">
-    <div class="card h-100 shadow-sm border-0">
-        <div class="card-body d-flex">
-            <div class="news-image-wrapper">
-                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold" style="background-image: url('images/tools-square.png'); background-size: cover; background-position: center;">
-                    <span class="badge bg-dark">TOOLS</span>
-                </div>
-            </div>
-            <div class="flex-grow-1 ps-4">
-                <h5 class="font-telex card-title h5 fw-normal">New CNC Mill Installation Complete</h5>
-                <p class="card-text text-muted">Our new 3-axis CNC mill is now operational and available for member projects. Safety training sessions begin next week.</p>
-                <div class="small text-muted fw-medium">August 01, 2025</div>
-            </div>
+<div class="card mb-2" style="transform: scale(0.8); transform-origin: left top; margin-bottom: -20%;">
+    <div class="row g-0">
+        <div class="col-auto">
+            
+            <img src="images/network.png" class="rounded-start" style="width: 120px; height: 120px; object-fit: cover;" alt="">
+            
+            <div class="text-center small fw-bold mt-1" style="width: 120px;">NEWS</div>
+            
+            
         </div>
-    </div>
-</div>
-<div class="col-12">
-    <div class="card h-100 shadow-sm border-0">
-        <div class="card-body d-flex">
-            <div class="news-image-wrapper">
-                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold" style="background-image: url('images/award-square.png'); background-size: cover; background-position: center;">
-                    <span class="badge bg-dark">AWARD</span>
-                </div>
-            </div>
-            <div class="flex-grow-1 ps-4">
-                <h5 class="font-telex card-title h5 fw-normal">Summer Robot Competition Results</h5>
-                <p class="card-text text-muted">Congratulations to Team Bolt for winning first place in our summer autonomous navigation challenge with their innovative LIDAR solution.</p>
-                <div class="small text-muted fw-medium">July 28, 2025</div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12">
-    <div class="card h-100 shadow-sm border-0">
-        <div class="card-body d-flex">
-            <div class="news-image-wrapper">
-                <div class="image-base image-rectangle d-flex align-items-center justify-content-center text-white fw-bold">
-                    <span class="badge bg-dark">NEWS</span>
-                </div>
-            </div>
-            <div class="flex-grow-1 ps-4">
-                <h5 class="font-telex card-title h5 fw-normal">New Member Orientation</h5>
-                <p class="card-text text-muted">Join us this Saturday for orientation covering shop safety, tool usage, and project guidelines. Perfect for newcomers to our community.</p>
-                <div class="small text-muted fw-medium">July 25, 2025</div>
+        <div class="col">
+            <div class="card-body py-2">
+                <h5 class="card-title mb-1">Second BRH Meeting September 4 2025!</h5>
+                <p class="card-text">Just a quick summary of the first meeting!</p>
+                <p class="card-text"><small class="text-muted">August 01, 2025</small></p>
             </div>
         </div>
     </div>
 </div>
                 </div>
-                <button class="btn btn-primary mt-3" onclick="loadMoreNews()">View All Updates</button>
             </section>
 
-            <!-- Meetings Section -->
-            <section class="mb-5">
-                <div class="mb-4">
-                    <h2 class="font-telex h3 fw-normal text-dark mb-2 d-flex align-items-center">
-                        <span class="me-2">🤝</span>Meetings
-                    </h2>
-                    <p class="text-muted">Join our regular gatherings</p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100 shadow-sm border-0">
-                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">HACK</div>
-                            <div class="card-body">
-                                <h5 class="font-telex card-title h6 fw-normal">Weekly Hack Night</h5>
-                                <p class="card-text text-muted small">Join us every Thursday for collaborative project work, knowledge sharing, and hands-on robotics development.</p>
-                                <div class="small text-muted fw-medium">Every Thursday • 7:00 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 shadow-sm border-0">
-                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">SHOW</div>
-                            <div class="card-body">
-                                <h5 class="font-telex card-title h6 fw-normal">Monthly Showcase</h5>
-                                <p class="card-text text-muted small">Present your latest builds, receive expert feedback, and discover what other makers are creating.</p>
-                                <div class="small text-muted fw-medium">First Saturday • 2:00 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 shadow-sm border-0">
-                            <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">LEARN</div>
-                            <div class="card-body">
-                                <h5 class="font-telex card-title h6 fw-normal">Workshop Series</h5>
-                                <p class="card-text text-muted small">Deep-dive learning sessions covering everything from Arduino basics to advanced machine learning integration.</p>
-                                <div class="small text-muted fw-medium">Weekends • Various Times</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <!-- Projects Section -->
-            <section class="mb-5">
-                <div class="mb-4">
-                    <h2 class="font-telex h3 fw-normal text-dark mb-2 d-flex align-items-center">
-                        <span class="me-2">🛠️</span>Projects
+            <section class="mb-3">
+                <div class="mb-3">
+                    <h2 class="font-telex h4 fw-normal text-dark mb-1 d-flex align-items-center">
+                        <span class="me-2">🛠️</span>Projects <a href="projects.html" class="text-primary small"> (see all)</a>
                     </h2>
                     <p class="text-muted">Current community initiatives</p>
                 </div>
-                <div class="row g-4">
-                    <div class="col-md-4">
+                <div class="row g-2 squeeze-cards">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card h-100 shadow-sm border-0">
                             <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">ROBOT</div>
                             <div class="card-body">
@@ -252,7 +268,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card h-100 shadow-sm border-0">
                             <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">NETWORK</div>
                             <div class="card-body">
@@ -262,7 +278,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card h-100 shadow-sm border-0">
                             <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">ARM</div>
                             <div class="card-body">
@@ -273,7 +289,6 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" onclick="loadMoreProjects()">Explore All Projects</button>
             </section>
         </main>
     </div>

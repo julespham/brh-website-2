@@ -1,6 +1,9 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## REQUIREMENTS
+
+* We use UV for package management. Only use UV!
+* Do not compliment, butter up, be overly agreeable with the user. Doint that is considered a failure
 
 ## Project Overview
 

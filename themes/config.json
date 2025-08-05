@@ -1,5 +1,5 @@
 {
-  "active_theme": "bootstrap",
+  "active_theme": "squeeze",
   "themes": {
     "tailwind": {
       "name": "Tailwind Theme",
@@ -16,6 +16,10 @@
     "bootstrap": {
       "name": "Bootstrap Theme",
       "path": "themes/bootstrap"
+    },
+    "squeeze": {
+      "name": "Squeeze Theme",
+      "path": "themes/squeeze"
     }
   }
 }

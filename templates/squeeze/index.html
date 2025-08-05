@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
+    {% include 'head.html' %}
+</head>
+<body class="{{ theme.body_classes }}">
+    <header>
+        <div class="logo">
+            <img src="images/robot-logo.png" alt="Logo">
+        </div>
+        <div class="banner">
+            <div>
+                <h1>{{ site.title }}</h1>
+                <p>{{ site.subtitle }}</p>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Separate Thin Navigation Bar -->
+    <div class="nav-bar-thin">
+        <div class="container-fluid">
+            <ul class="navbar-nav mx-auto d-flex flex-row">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#meetings" class="nav-link">Meetings</a></li>
+                <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="members.html" class="nav-link">Members</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="{{ theme.main_container_classes }}">
+        <!-- Hero Section -->
+        <section class="{{ theme.hero_classes }}">
+            <div class="hero-section mx-auto">
+                {{ hero.hero_content|safe }}
+            </div>
+        </section>
+
+        <main class="{{ theme.main_content_classes }}">
+            <!-- What's New Section -->
+            <section class="{{ theme.section_classes }}">
+                <div class="{{ theme.section_header_classes }}">
+                    <h2 class="font-telex {{ theme.section_title_classes }}">
+                        <span class="me-2">{{ site.news_emoji }}</span>{{ site.news_title }} <a href="whatsnew.html" class="text-primary small"> (see all)</a>
+                    </h2>
+                    <p class="{{ theme.section_subtitle_classes }}">{{ site.news_subtitle }}</p>
+                </div>
+                <div class="col-12" id="whats-new-content">
+                    {{ news_content }}
+                </div>
+            </section>
+
+
+            <!-- Projects Section -->
+            <section class="{{ theme.section_classes }}">
+                <div class="{{ theme.section_header_classes }}">
+                    <h2 class="font-telex {{ theme.section_title_classes }}">
+                        <span class="me-2">{{ site.projects_emoji }}</span>{{ site.projects_title }} <a href="projects.html" class="text-primary small"> (see all)</a>
+                    </h2>
+                    <p class="{{ theme.section_subtitle_classes }}">{{ site.projects_subtitle }}</p>
+                </div>
+                <div class="{{ theme.card_grid_classes }}">
+                    <div class="{{ theme.card_classes }}">
+                        <div class="{{ theme.card_inner_classes }}">
+                            <div class="{{ theme.card_image_classes }}">ROBOT</div>
+                            <div class="{{ theme.card_content_classes }}">
+                                <h5 class="font-telex {{ theme.card_title_classes }}">Autonomous Delivery Bot</h5>
+                                <p class="{{ theme.card_text_classes }}">Community project building a robot that can navigate indoor spaces and deliver items between floors using advanced pathfinding algorithms.</p>
+                                <div class="{{ theme.card_meta_classes }}">Status: Active Development</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{{ theme.card_classes }}">
+                        <div class="{{ theme.card_inner_classes }}">
+                            <div class="{{ theme.card_image_classes }}">NETWORK</div>
+                            <div class="{{ theme.card_content_classes }}">
+                                <h5 class="font-telex {{ theme.card_title_classes }}">IoT Sensor Network</h5>
+                                <p class="{{ theme.card_text_classes }}">Creating a distributed mesh network of environmental sensors to monitor conditions and optimize workflows throughout the makerspace.</p>
+                                <div class="{{ theme.card_meta_classes }}">Status: Testing Phase</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{{ theme.card_classes }}">
+                        <div class="{{ theme.card_inner_classes }}">
+                            <div class="{{ theme.card_image_classes }}">ARM</div>
+                            <div class="{{ theme.card_content_classes }}">
+                                <h5 class="font-telex {{ theme.card_title_classes }}">Open Source Robot Arm</h5>
+                                <p class="{{ theme.card_text_classes }}">Developing an accessible, high-precision robotic arm controller that makes industrial automation available to the maker community.</p>
+                                <div class="{{ theme.card_meta_classes }}">Status: Beta Release</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="{{ theme.footer_classes }}">
+        <div class="{{ theme.footer_container_classes }}">
+            <p class="{{ theme.footer_text_classes }}">{{ site.footer_text }}</p>
+        </div>
+    </footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
