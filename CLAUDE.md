@@ -1,57 +1,26 @@
 # CLAUDE.md
 
-## REQUIREMENTS
+## Overview
 
-* We use UV for package management. Only use UV!
-* Do not compliment, butter up, be overly agreeable with the user. Doint that is considered a failure
+* a static web site generator which converts a series of templates and content and generates a directory of html, js and css that fully represents the web site of the Boston Robot Hackers
 
-## Project Overview
+## Key Technical Directives
 
-This is a static website for the Boston Robot Hackers community - a robotics makerspace and meetup group. The site is built with vanilla HTML, CSS, and JavaScript, focusing on modern design principles and responsive layout.
+* Use uv for package management not pip. Only use UV
+* We use markdown for much of the user supplied content
+* Look for and eliminate duplicate code or css
+* There should almost never be css or js inside an html file
+* Templates represent different types of page on the web site
+* Themes represent different styles used to render the web site
+* Github actions are used to produce and github page hosted web site
 
-## Architecture
+## Key Coding Style REquirements
 
-The project uses a simple static website structure:
+* Code in python
+* Always look for a well supported package to implement a feature
+* Look for and eliminate duplicate code
+* Use python classes where apporpriate
+* No methods or functions longer than 35 lines
+* No source files longer than 400 lines
 
-- `index.html` - Main page with sections for news, meetings, and projects
-- `styles.css` - Modern CSS with CSS custom properties (variables) and responsive design
-- `script.js` - Basic JavaScript for navigation and placeholder functionality
-- `images/` - Static assets including the robot logo
 
-## Key Design Patterns
-
-### CSS Architecture
-- Uses CSS custom properties defined in `:root` for consistent theming
-- Modern flexbox and grid layouts for responsive design
-- Component-based class naming (`.card`, `.section`, `.hero`, etc.)
-- Mobile-first responsive design with breakpoints at 768px and 480px
-
-### JavaScript
-- Event delegation for smooth scrolling navigation
-- Placeholder functions for dynamic content loading (`loadMoreNews()`, `loadMoreProjects()`)
-- DOM manipulation follows modern JavaScript practices
-
-## Development
-
-Since this is a static website with no build process:
-
-- **Local Development**: Open `index.html` directly in a browser or use a simple HTTP server
-- **Testing**: Manual testing across different screen sizes and browsers
-- **Deployment**: Static file hosting (no compilation needed)
-
-## Content Structure
-
-The site features three main content sections:
-
-1. **What's New**: News updates with image, title, content, and date
-2. **Meetings**: Regular community events (Weekly Hack Night, Monthly Showcase, Workshop Series)
-3. **Projects**: Current community initiatives with status indicators
-
-Each content card follows a consistent structure with emoji icons, titles, descriptions, and metadata.
-
-## Styling Notes
-
-- Uses a professional color scheme with blue primary, red secondary, and amber accent colors
-- Typography uses system fonts for optimal performance
-- Hover effects and animations enhance user experience
-- Box shadows and border radius create modern card-based layout

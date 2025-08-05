@@ -9,11 +9,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
     {% include 'head.html' %}
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="images/robot-logo.png" alt="Logo">
+<body class="theme-squeeze">
+    <!-- Navigation Bar with Logo -->
+    <div class="nav-bar-thin">
+        <div class="container-fluid">
+            <div class="nav-logo">
+                <img src="images/robot-logo.png" alt="Boston Robot Hackers Logo">
+            </div>
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#meetings" class="nav-link">Meetings</a></li>
+                <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="members.html" class="nav-link">Members</a></li>
+            </ul>
         </div>
+    </div>
+    
+    <!-- Header with Banner Only -->
+    <header class="banner-header">
         <div class="banner">
             <div>
                 <h1>{{ site.title }}</h1>

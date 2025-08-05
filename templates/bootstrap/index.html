@@ -9,16 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
     {% include 'head.html' %}
 </head>
-<body class="{{ theme.body_classes }}">
+<body class="theme-bootstrap {{ theme.body_classes }}">
     <!-- Bootstrap Navbar -->
     <nav class="{{ theme.header_classes }}">
         <div class="{{ theme.header_container_classes }}">
             <a class="{{ theme.logo_container_classes }}" href="#home">
                 <img src="images/robot-logo.png" alt="{{ site.title }} Logo" class="{{ theme.logo_image_classes }}">
-                <div>
-                    <div class="font-telex {{ theme.logo_title_classes }}">{{ site.title }}</div>
-                    <div class="{{ theme.logo_subtitle_classes }}">{{ site.subtitle }}</div>
-                </div>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -35,6 +31,14 @@
             </div>
         </div>
     </nav>
+    
+    <!-- Banner Header -->
+    <header class="banner-header bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-normal">{{ site.title }}</h1>
+            <p class="lead">{{ site.subtitle }}</p>
+        </div>
+    </header>
 
     <div class="{{ theme.main_container_classes }}">
         <!-- Hero Section -->
