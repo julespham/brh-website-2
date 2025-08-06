@@ -19,7 +19,12 @@ from pygments.formatters import HtmlFormatter
 
 class WebsiteBuilder:
     def __init__(self):
-        self.root_dir = Path("..")  # Build script is now in build/ subdirectory
+        # Detect if running from build/ subdirectory or root directory
+        current_dir = Path.cwd()
+        if current_dir.name == "build":
+            self.root_dir = Path("..")  # Build script is running from build/ subdirectory
+        else:
+            self.root_dir = Path(".")   # Build script is running from root directory
         self.templates_dir = self.root_dir / "templates"
         self.themes_dir = self.root_dir / "themes"
         self.config_dir = self.root_dir / "config"
@@ -57,11 +62,11 @@ class WebsiteBuilder:
         config_file = self.themes_dir / "config.json"
         if config_file.exists():
             return json.loads(config_file.read_text())
-        return {"active_theme": "tailwind"}
+        return {"active_theme": "squeeze"}
     
     def load_active_theme(self) -> Dict[str, Any]:
         """Load the active theme configuration."""
-        theme_name = self.theme_config.get('active_theme', 'tailwind')
+        theme_name = self.theme_config.get('active_theme', 'squeeze')
         theme_file = self.themes_dir / theme_name / "theme.json"
         
         if theme_file.exists():
@@ -613,7 +618,7 @@ class WebsiteBuilder:
             print(f"Copied shared.css to {css_dest}")
         
         # Copy active theme CSS
-        theme_name = self.theme_config.get('active_theme', 'tailwind')
+        theme_name = self.theme_config.get('active_theme', 'squeeze')
         theme_css_src = self.themes_dir / theme_name / f"{theme_name}.css"
         if theme_css_src.exists():
             shutil.copy2(theme_css_src, css_dest / f"{theme_name}.css")

@@ -1,7 +1,7 @@
 ---
 name: "Pito Salas"
 role: "Robot Hacker"
-graphic: "robot"
+image: "images/people/pitosalas.png"
 featured: true
 skills: ["ROS", "Software Engineering", "Robotics"]
 github: "https://github.com/pitosalas"

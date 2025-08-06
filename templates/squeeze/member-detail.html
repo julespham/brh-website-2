@@ -33,12 +33,12 @@
                 <div class="row text-muted small">
                     {% if member.metadata.github %}
                     <div class="col-md-6 mb-1">
-                        <strong>GitHub:</strong> <a href="https://github.com/{{ member.metadata.github }}" target="_blank">{{ member.metadata.github }}</a>
+                        <strong>GitHub:</strong> <a href="{{ member.metadata.github }}" target="_blank">{{ member.metadata.github }}</a>
                     </div>
                     {% endif %}
                     {% if member.metadata.linkedin %}
                     <div class="col-md-6 mb-1">
-                        <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/{{ member.metadata.linkedin }}" target="_blank">{{ member.metadata.linkedin }}</a>
+                        <strong>LinkedIn:</strong> <a href="{{ member.metadata.linkedin }}" target="_blank">{{ member.metadata.linkedin }}</a>
                     </div>
                     {% endif %}
                     {% if member.metadata.projects %}
