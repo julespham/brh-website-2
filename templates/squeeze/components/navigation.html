@@ -1,0 +1,23 @@
+<!-- Navigation Bar -->
+<div class="nav-bar-thin py-1">
+    <div class="container-fluid">
+        <ul class="navbar-nav mx-auto d-flex flex-row">
+            <li class="nav-item">
+                <a href="{{ '../' if is_detail_page else '' }}index.html" 
+                   class="nav-link {{ 'active' if current_page == 'home' else 'text-light' }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ '../' if is_detail_page else '' }}whatsnew.html" 
+                   class="nav-link {{ 'active' if current_page == 'news' else 'text-light' }}">What's New</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ '../' if is_detail_page else '' }}projects.html" 
+                   class="nav-link {{ 'active' if current_page == 'projects' else 'text-light' }}">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ '../' if is_detail_page else '' }}members.html" 
+                   class="nav-link {{ 'active' if current_page == 'members' else 'text-light' }}">Members</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,82 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
-    {% include 'head.html' %}
-</head>
-<body class="theme-squeeze {{ theme.body_classes }}">
-    <!-- Navigation Bar -->
-    <div class="nav-bar-thin py-1">
-        <div class="container-fluid">
-            <ul class="navbar-nav mx-auto d-flex flex-row">
-                <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="whatsnew.html" class="nav-link text-light">What's New</a></li>
-                <li class="nav-item"><a href="projects.html" class="nav-link text-light">Projects</a></li>
-                <li class="nav-item"><a href="members.html" class="nav-link text-light">Members</a></li>
-            </ul>
-        </div>
-    </div>
-    
-    <!-- Header with Banner Only -->
-    <header class="banner-header">
-        <div class="banner">
-            <div>
-                <h1>{{ site.title }}</h1>
-                <p>{{ site.subtitle }}</p>
-            </div>
-        </div>
-    </header>
+{% extends 'layouts/home.html' %}
 
-    <div class="{{ theme.main_container_classes }}">
-        <!-- Hero Section -->
-        <section class="{{ theme.hero_classes }}">
-            <div class="hero-section mx-auto">
-                {{ hero.hero_content|safe }}
-            </div>
-        </section>
+{% set current_page = 'home' %}
+{% set is_detail_page = false %}
 
-        <main class="{{ theme.main_content_classes }}">
-            <!-- What's New Section -->
-            <section class="{{ theme.section_classes }}">
-                <div class="{{ theme.section_header_classes }}">
-                    <h2 class="font-telex {{ theme.section_title_classes }}">
-                        <span class="me-2">{{ site.news_emoji }}</span>{{ site.news_title }}&nbsp;<a href="whatsnew.html" class="text-primary small">(see all)</a>
-                    </h2>
-                    <p class="{{ theme.section_subtitle_classes }}">{{ site.news_subtitle }}</p>
-                </div>
-                <div class="col-12" id="whats-new-content">
-                    {{ news_content }}
-                </div>
-            </section>
+{% block sections %}
+    <!-- What's New Section -->
+    {% set section_title = site.news_title %}
+    {% set section_emoji = site.news_emoji %}
+    {% set section_subtitle = site.news_subtitle %}
+    {% set section_link = 'whatsnew.html' %}
+    {% set section_link_text = 'see all' %}
+    {% set section_content = news_content %}
+    {% set grid_layout = false %}
+    {% include 'components/section.html' %}
 
-
-            <!-- Projects Section -->
-            <section class="{{ theme.section_classes }}">
-                <div class="{{ theme.section_header_classes }}">
-                    <h2 class="font-telex {{ theme.section_title_classes }}">
-                        <span class="me-2">{{ site.projects_emoji }}</span>{{ site.projects_title }} <a href="projects.html" class="text-primary small"> (see all)</a>
-                    </h2>
-                    <p class="{{ theme.section_subtitle_classes }}">{{ site.projects_subtitle }}</p>
-                </div>
-                <div class="{{ theme.card_grid_classes }}">
-                    {{ projects_content|safe }}
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <!-- Footer -->
-    <footer class="{{ theme.footer_classes }}">
-        <div class="{{ theme.footer_container_classes }}">
-            <p class="{{ theme.footer_text_classes }}">{{ site.footer_text }}</p>
-        </div>
-    </footer>
-
-    <script src="scripts/script.js"></script>
-</body>
-</html>
+    <!-- Projects Section -->
+    {% set section_title = site.projects_title %}
+    {% set section_emoji = site.projects_emoji %}
+    {% set section_subtitle = site.projects_subtitle %}
+    {% set section_link = 'projects.html' %}
+    {% set section_link_text = 'see all' %}
+    {% set section_content = projects_content %}
+    {% set grid_layout = true %}
+    {% include 'components/section.html' %}
+{% endblock %}

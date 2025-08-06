@@ -1,0 +1,21 @@
+<div class="{{ theme.card_classes }}">
+    <div class="{{ theme.card_inner_classes }}">
+        <div class="{{ theme.card_image_classes }}">{{ card_text }}</div>
+        <div class="{{ theme.card_content_classes }}">
+            <h5 class="font-telex {{ theme.card_title_classes }}">
+                <a href="members/{{ id }}.html" class="text-decoration-none">{{ name }}</a>
+            </h5>
+            <p class="{{ theme.card_text_classes }}">{{ role }}</p>
+            {% if skills %}
+            <div class="member-skills">
+                {% for skill in skills[:3] %}
+                <span class="badge bg-light text-dark me-1">{{ skill }}</span>
+                {% endfor %}
+                {% if skills|length > 3 %}
+                <span class="text-muted small">+{{ skills|length - 3 }} more</span>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

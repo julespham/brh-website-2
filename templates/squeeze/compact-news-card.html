@@ -9,7 +9,9 @@
         {% endif %}
     </div>
     <div class="col">
-        <h6 class="mb-0">{{ title }}</h6>
+        <h6 class="mb-0">
+            <a href="news/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
+        </h6>
         <p class="text-muted small mb-0">{{ excerpt }}</p>
         <small class="text-muted">{{ formatted_date }}</small>
     </div>

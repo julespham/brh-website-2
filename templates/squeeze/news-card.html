@@ -14,7 +14,9 @@
         </div>
         <div class="col">
             <div class="card-body py-2">
-                <h5 class="card-title mb-1">{{ title }}</h5>
+                <h5 class="card-title mb-1">
+                    <a href="news/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
+                </h5>
                 <p class="card-text">{{ excerpt }}</p>
                 <p class="card-text"><small class="text-muted">{{ formatted_date }}</small></p>
             </div>

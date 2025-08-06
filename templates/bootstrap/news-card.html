@@ -7,7 +7,9 @@
                 </div>
             </div>
             <div class="flex-grow-1 ps-4">
-                <h5 class="font-telex card-title h5 fw-normal">{{ title }}</h5>
+                <h5 class="font-telex card-title h5 fw-normal">
+                    <a href="news/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
+                </h5>
                 <p class="card-text text-muted">{{ excerpt }}</p>
                 <div class="small text-muted fw-medium">{{ formatted_date }}</div>
             </div>

@@ -2,7 +2,9 @@
     <div class="{{ theme.card_inner_classes }}">
         <div class="{{ theme.card_image_classes }}">{{ text }}</div>
         <div class="{{ theme.card_content_classes }}">
-            <h5 class="font-telex {{ theme.card_title_classes }}">{{ title }}</h5>
+            <h5 class="font-telex {{ theme.card_title_classes }}">
+                <a href="projects/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
+            </h5>
             <p class="{{ theme.card_text_classes }}">{{ excerpt }}</p>
             <div class="{{ theme.card_meta_classes }}">Status: {{ status }}</div>
         </div>

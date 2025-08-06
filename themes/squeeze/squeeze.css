@@ -4,7 +4,7 @@
 
 /* Navigation bar with logo */
 .nav-bar-thin {
-  height: 48px; /* 20% less tall */
+  height: 35px;
   background: #1a1a1a;
   border-bottom: 1px solid #333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -49,13 +49,11 @@
 
 .banner h1 {
   color: white;
-  font-size: 3rem;
   text-shadow: 2px 2px 4px black;
 }
 
 .banner p {
   color: white;
-  font-size: 1.5rem;
   text-shadow: 1px 1px 2px black;
 }
 
@@ -76,13 +74,9 @@
 }
 
 .nav-bar-thin .nav-link {
-  font-family: 'Telex', sans-serif !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
   color: #f0f0f0 !important;
   padding: 0.25rem 1.25rem !important;
   transition: all 0.2s ease;
-  line-height: 1;
 }
 
 .nav-bar-thin .nav-link:hover {

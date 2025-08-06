@@ -2,7 +2,7 @@
 title: "Second BRH Meeting September 4 2025!"
 date: 2025-08-01
 image: "images/network.png"
-excerpt: "Just a quick summary of the first meeting!"
+excerpt: "Our second meeting has been scheduled. Details coming soon."
 highlight: true
 ---
 ## Second meeting of BRH 

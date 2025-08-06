@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site.title }}{% endblock %}</title>
+    {% include 'head.html' %}
+</head>
+<body class="theme-squeeze {{ theme.body_classes if theme.body_classes else '' }}">
+    <div class="main-wrapper">
+        {% include 'components/navigation.html' %}
+        
+        {% include 'components/banner.html' %}
+        
+        {% block content %}{% endblock %}
+    </div>
+    
+    {% include 'components/footer.html' %}
+    
+    <script src="{{ '../' if is_detail_page else '' }}scripts/script.js"></script>
+</body>
+</html>

@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Boston Robot Hackers</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
     <!-- Preload critical images -->
 <link rel="preload" href="images/robot-logo.png" as="image">
 <link rel="preload" href="images/banner-1.png" as="image">
 
 <!-- Shared CSS for common styles -->
-<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="css/shared.css">
 
 <!-- Squeeze Theme CSS -->
-<link rel="stylesheet" href="squeeze.css">
+<link rel="stylesheet" href="css/squeeze.css">
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -23,55 +20,59 @@
 <!-- Bootstrap JavaScript Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
-<body class="theme-squeeze">
-    <!-- Navigation Bar with Logo -->
-    <div class="nav-bar-thin">
-        <div class="container-fluid">
-            <div class="nav-logo">
-                <img src="images/robot-logo.png" alt="Boston Robot Hackers Logo">
-            </div>
-            <ul class="navbar-nav d-flex flex-row">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#meetings" class="nav-link">Meetings</a></li>
-                <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="members.html" class="nav-link">Members</a></li>
-            </ul>
+<body class="theme-squeeze ">
+    <div class="main-wrapper">
+        <!-- Navigation Bar -->
+<div class="nav-bar-thin py-1">
+    <div class="container-fluid">
+        <ul class="navbar-nav mx-auto d-flex flex-row">
+            <li class="nav-item">
+                <a href="index.html" 
+                   class="nav-link text-light">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="whatsnew.html" 
+                   class="nav-link text-light">What's New</a>
+            </li>
+            <li class="nav-item">
+                <a href="projects.html" 
+                   class="nav-link active">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a href="members.html" 
+                   class="nav-link text-light">Members</a>
+            </li>
+        </ul>
+    </div>
+</div>
+        
+        <!-- Header with Banner -->
+<header class="banner-header">
+    <div class="banner">
+        <div>
+            <h1>Boston Robot Hackers</h1>
+            <p>CONNECT * LEARN * BUILD</p>
         </div>
     </div>
-    
-    <!-- Header with Banner Only -->
-    <header class="banner-header">
-        <div class="banner">
-            <div>
-                <h1>Boston Robot Hackers</h1>
-                <p>CONNECT * LEARN * BUILD</p>
-            </div>
-        </div>
-    </header>
-    
-    <div class="nav-bar-thin">
-        <div class="container-fluid">
-            <ul class="navbar-nav mx-auto d-flex flex-row">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#meetings" class="nav-link">Meetings</a></li>
-                <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="members.html" class="nav-link">Members</a></li>
-            </ul>
-        </div>
+</header>
+        
+        
+    <!-- Hero Section -->
+
+<section class="hero text-center py-3 my-2 rounded shadow-lg">
+    <div class="hero-section mx-auto">
+        <h1 id="our-projects">Our Projects</h1>
+<p>Explore all the exciting robotics projects our community is working on</p>
     </div>
+</section>
+
 
     <div class="container-fluid px-2 px-md-3">
-        <section class="hero text-center py-3 my-2 rounded shadow-lg">
-            <div class="hero-section mx-auto">
-                <h1 id="our-projects">Our Projects</h1>
-<p>Explore all the exciting robotics projects our community is working on</p>
-            </div>
-        </section>
-
         <main class="py-2 pb-3">
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    
+            
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            
             <article class="mb-5 pb-4 border-bottom">
                 <div class="row mb-3">
                     <div class="col-md-2">
@@ -82,6 +83,7 @@
                         </div>
                     </div>
                     <div class="col-md-10">
+                        <h3><a href="projects/2025-08-01-dome.html" class="text-decoration-none">Dome ROBOT</a></h3>
                         <div class="project-content">
                             <h1 id="dome-robot">Dome Robot</h1>
 <p>A small simple differntial drive robot. This is a third generation of robots that I built at Brandeis. What's different is that I had no help, I built it all with my own two hands (more or less).</p>
@@ -101,17 +103,21 @@
                 </div>
             </article>
             
-                </div>
-            </div>
+        </div>
+    </div>
+
         </main>
     </div>
 
-    <footer class="bg-dark text-light text-center py-5 mt-5">
-        <div class="container-fluid">
-            <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>
-        </div>
-    </footer>
-
+    </div>
+    
+    <!-- Footer -->
+<footer class="bg-dark text-light text-center py-2 mt-5">
+    <div class="container-fluid">
+        <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>
+    </div>
+</footer>
+    
     <script src="scripts/script.js"></script>
 </body>
 </html>

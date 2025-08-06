@@ -1,5 +1,21 @@
 [
   {
+    "id": "2025-08-03-monthly-meetings",
+    "title": "Montly Meetings",
+    "date": "2025-08-03",
+    "image": "images/meeting.png",
+    "text": "NEWS",
+    "excerpt": "As we are still a very new club we are still figuring out how our meetings work. Here is our current approach. We meet about once a month, around the first Thursday of the month. The meetings are always on a Thursday from 7:00pm to 9:00pm. Our meetings happen at the Artisans Asylum in Boston (Alston) Massachusetts.",
+    "content": "<h3 id=\"format-of-the-meeting-times-are-very-approximate\">Format of the meeting (times are very approximate!)</h3>\n<ol>\n<li>7:00 - People arrive and we mingle and catch up. Everyone is encouraged to bring a show and tell artifact, whatever it might be. Either to show off a new project, or progress on an existing project, or to get help solving a problem. A long table is set up just for this purpose.</li>\n<li>7:20 - Each show and teller gives a very brief explanation of what they brought and takes a few questions.</li>\n<li>7:35 - Main talk, which varies every month. We look for speakers where we can all learn something useful and interesting towards our own projects. Most of the talks will be very technical, and some demo is strongly encouraged. Talk to Pito if you have an idea and want to be put on the schedule.</li>\n<li>8:15 - Discuisson and Q&amp;A</li>\n<li>8:30 - Wrap</li>\n</ol>",
+    "metadata": {
+      "title": "Montly Meetings",
+      "date": "2025-08-03",
+      "image": "images/meeting.png",
+      "excerpt": "As we are still a very new club we are still figuring out how our meetings work. Here is our current approach. We meet about once a month, around the first Thursday of the month. The meetings are always on a Thursday from 7:00pm to 9:00pm. Our meetings happen at the Artisans Asylum in Boston (Alston) Massachusetts.",
+      "highlight": true
+    }
+  },
+  {
     "id": "2025-08-02-first_meeting",
     "title": "First BRH Meeting was great!",
     "date": "2025-08-01",
@@ -21,13 +37,13 @@
     "date": "2025-08-01",
     "image": "images/network.png",
     "text": "NEWS",
-    "excerpt": "Just a quick summary of the first meeting!",
+    "excerpt": "Our second meeting has been scheduled. Details coming soon.",
     "content": "<h2 id=\"second-meeting-of-brh\">Second meeting of BRH</h2>\n<div class=\"highlight\"><pre><span></span><code>SEPTEMBER 4th 2025\n7:00PM at the Artisans Asylum\n</code></pre></div>\n\n<h3 id=\"agenda-still-being-prepared\">Agenda still being prepared</h3>\n<p><a href=\"https://www.eventbrite.com/e/1489641520889?aff=oddtdtcreator\">Go To EventBrige to register for the event</a></p>",
     "metadata": {
       "title": "Second BRH Meeting September 4 2025!",
       "date": "2025-08-01",
       "image": "images/network.png",
-      "excerpt": "Just a quick summary of the first meeting!",
+      "excerpt": "Our second meeting has been scheduled. Details coming soon.",
       "highlight": true
     }
   }

@@ -1,61 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members - {{ site.title }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
-    {% include 'head.html' %}
-</head>
-<body class="theme-squeeze">
-    <!-- Navigation Bar -->
-    <div class="nav-bar-thin py-1">
-        <div class="container-fluid">
-            <ul class="navbar-nav mx-auto d-flex flex-row">
-                <li class="nav-item"><a href="index.html" class="nav-link text-light">Home</a></li>
-                <li class="nav-item"><a href="whatsnew.html" class="nav-link text-light">What's New</a></li>
-                <li class="nav-item"><a href="projects.html" class="nav-link text-light">Projects</a></li>
-                <li class="nav-item"><a href="members.html" class="nav-link active">Members</a></li>
-            </ul>
-        </div>
-    </div>
-    
-    <!-- Header with Banner Only -->
-    <header class="banner-header">
-        <div class="banner">
-            <div>
-                <h1>{{ site.title }}</h1>
-                <p>{{ site.subtitle }}</p>
-            </div>
-        </div>
-    </header>
+{% extends 'layouts/page.html' %}
 
-    <div class="container-fluid px-2 px-md-3">
-        <section class="{{ theme.hero_classes }}">
-            <div class="hero-section mx-auto">
-                {{ hero.hero_content|safe }}
-            </div>
-        </section>
+{% set current_page = 'members' %}
+{% set is_detail_page = false %}
 
-        <main class="py-2 pb-3">
+{% block title %}Members - {{ site.title }}{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
             <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="row">
-                        {{ members_content }}
-                    </div>
-                </div>
+                {{ members_content }}
             </div>
-        </main>
-    </div>
-
-    <footer class="bg-dark text-light text-center py-5 mt-5">
-        <div class="container-fluid">
-            <p class="mb-0">{{ site.footer_text }}</p>
         </div>
-    </footer>
-
-    <script src="scripts/script.js"></script>
-</body>
-</html>
+    </div>
+{% endblock %}

@@ -40,7 +40,7 @@
     "card_text_classes": "card-text text-muted small",
     "card_meta_classes": "small text-muted fw-medium",
     "button_classes": "btn btn-primary mt-3",
-    "footer_classes": "bg-dark text-light text-center py-5 mt-5",
+    "footer_classes": "bg-dark text-light text-center py-2 mt-5",
     "footer_container_classes": "container-fluid",
     "footer_text_classes": "mb-0"
   }
