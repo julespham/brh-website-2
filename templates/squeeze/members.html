@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - {{ site.title }}</title>
+    <title>Members - {{ site.title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
             <ul class="navbar-nav mx-auto d-flex flex-row">
                 <li class="nav-item"><a href="index.html" class="nav-link text-light">Home</a></li>
                 <li class="nav-item"><a href="whatsnew.html" class="nav-link text-light">What's New</a></li>
-                <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
-                <li class="nav-item"><a href="members.html" class="nav-link text-light">Members</a></li>
+                <li class="nav-item"><a href="projects.html" class="nav-link text-light">Projects</a></li>
+                <li class="nav-item"><a href="members.html" class="nav-link active">Members</a></li>
             </ul>
         </div>
     </div>
@@ -42,7 +42,9 @@
         <main class="py-2 pb-3">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    {{ projects_content }}
+                    <div class="row">
+                        {{ members_content }}
+                    </div>
                 </div>
             </div>
         </main>
