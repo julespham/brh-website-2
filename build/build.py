@@ -95,7 +95,11 @@ class WebsiteBuilder:
         formatter = HtmlFormatter(style=theme, cssclass='highlight')
         css_content = formatter.get_style_defs('.highlight')
         
-        css_file = self.dist_dir / 'syntax.css'
+        # Create css directory if it doesn't exist
+        css_dir = self.dist_dir / 'css'
+        css_dir.mkdir(exist_ok=True)
+        
+        css_file = css_dir / 'syntax.css'
         css_file.write_text(css_content)
         print(f"Generated syntax highlighting CSS: {css_file}")
     
@@ -127,7 +131,7 @@ class WebsiteBuilder:
             # Ensure required fields have defaults
             return {
                 'id': file_path.stem,
-                'title': metadata.get('title', 'Untitled'),
+                'title': metadata.get('title', metadata.get('name', 'Untitled')),
                 'date': metadata.get('date'),
                 'image': metadata.get('image', ''),  # URL to 512x512 square image (scaled with CSS as needed)
                 'text': metadata.get('text', metadata.get('emoji', 'NEWS')),  # Simple text overlay
@@ -160,6 +164,7 @@ class WebsiteBuilder:
             image_classes = self.active_theme['news_image_classes']
             
             card_html = template.render(
+                id=post['id'],
                 title=post['title'],
                 excerpt=post['excerpt'],
                 text=post['text'],
@@ -259,6 +264,7 @@ class WebsiteBuilder:
             
             # Render the card
             card_html = template.render(
+                id=post['id'],
                 title=post['title'],
                 excerpt=post['excerpt'],
                 formatted_date=formatted_date,
@@ -269,9 +275,39 @@ class WebsiteBuilder:
         
         return '\n'.join(cards_html)
     
+    def build_news_detail_pages(self, posts):
+        """Build individual detail pages for each news item."""
+        detail_template = self.jinja_env.get_template('news-detail.html')
+        
+        for post in posts:
+            # Create news detail directory if it doesn't exist
+            news_detail_dir = self.dist_dir / 'news'
+            news_detail_dir.mkdir(exist_ok=True)
+            
+            # Format date for display
+            post_with_formatted_date = post.copy()
+            post_with_formatted_date['date'] = self.format_date(post['date'])
+            
+            # Generate detail page
+            html_content = detail_template.render(
+                site=self.site_config,
+                theme=self.active_theme,
+                post=post_with_formatted_date
+            )
+            
+            # Write individual detail page
+            detail_file = news_detail_dir / f"{post['id']}.html"
+            detail_file.write_text(html_content, encoding='utf-8')
+        
+        print(f"Built {len(posts)} news detail pages")
+
     def build_news_page(self):
         """Build the whatsnew.html page with all news items."""
         posts = self.get_all_news_posts()
+        
+        # Build individual detail pages
+        self.build_news_detail_pages(posts)
+        
         news_content = self.render_compact_news_cards(posts)
         
         # Generate hero content for whatsnew page
@@ -331,6 +367,7 @@ class WebsiteBuilder:
                         </div>
                     </div>
                     <div class="col-md-10">
+                        <h3><a href="projects/{project['id']}.html" class="text-decoration-none">{project['title']}</a></h3>
                         <div class="project-content">
                             {project['content']}
                         </div>
@@ -352,9 +389,39 @@ class WebsiteBuilder:
         
         return '\n'.join(content_sections)
     
+    def build_project_detail_pages(self, projects):
+        """Build individual detail pages for each project."""
+        detail_template = self.jinja_env.get_template('project-detail.html')
+        
+        for project in projects:
+            # Create project detail directory if it doesn't exist
+            project_detail_dir = self.dist_dir / 'projects'
+            project_detail_dir.mkdir(exist_ok=True)
+            
+            # Format date for display
+            project_with_formatted_date = project.copy()
+            project_with_formatted_date['date'] = self.format_date(project['date'])
+            
+            # Generate detail page
+            html_content = detail_template.render(
+                site=self.site_config,
+                theme=self.active_theme,
+                project=project_with_formatted_date
+            )
+            
+            # Write individual detail page
+            detail_file = project_detail_dir / f"{project['id']}.html"
+            detail_file.write_text(html_content, encoding='utf-8')
+        
+        print(f"Built {len(projects)} project detail pages")
+
     def build_projects_page(self):
         """Build the projects.html page with all projects."""
         projects = self.get_all_projects()
+        
+        # Build individual detail pages
+        self.build_project_detail_pages(projects)
+        
         projects_content = self.render_projects_content(projects)
         
         # Generate hero content for projects page
@@ -383,6 +450,7 @@ class WebsiteBuilder:
         
         for project in projects:
             card_html = template.render(
+                id=project['id'],
                 title=project['title'],
                 text=project['text'],
                 excerpt=project['excerpt'],
@@ -392,6 +460,95 @@ class WebsiteBuilder:
             cards_html.append(card_html)
         
         return '\n'.join(cards_html)
+    
+    def get_all_members(self):
+        """Get all members from markdown files."""
+        members_dir = self.content_dir / 'members'
+        if not members_dir.exists():
+            print(f"Warning: {members_dir} directory not found")
+            return []
+        
+        # Set up markdown processor
+        md_processor = self.setup_markdown_processor()
+        
+        # Process all markdown files
+        members = []
+        for md_file in members_dir.glob('*.md'):
+            member_data = self.process_markdown_file(md_file, md_processor)
+            if member_data:
+                members.append(member_data)
+        
+        # Sort by name (alphabetical)
+        members.sort(key=lambda x: x['title'])
+        return members
+    
+    def build_member_detail_pages(self, members):
+        """Build individual detail pages for each member."""
+        detail_template = self.jinja_env.get_template('member-detail.html')
+        
+        for member in members:
+            # Create member detail directory if it doesn't exist
+            member_detail_dir = self.dist_dir / 'members'
+            member_detail_dir.mkdir(exist_ok=True)
+            
+            # Generate detail page
+            html_content = detail_template.render(
+                site=self.site_config,
+                theme=self.active_theme,
+                member=member
+            )
+            
+            # Write individual detail page
+            detail_file = member_detail_dir / f"{member['id']}.html"
+            detail_file.write_text(html_content, encoding='utf-8')
+        
+        print(f"Built {len(members)} member detail pages")
+
+    def render_member_cards(self, members):
+        """Render member cards for the members page."""
+        template = self.jinja_env.get_template('member-card.html')
+        cards_html = []
+        
+        for member in members:
+            card_html = template.render(
+                id=member['id'],
+                name=member['title'],
+                role=member['metadata'].get('role', 'Member'),
+                skills=member['metadata'].get('skills', []),
+                card_text=member['metadata'].get('card-text', 'MEMBER'),
+                theme=self.active_theme
+            )
+            cards_html.append(card_html)
+        
+        return '\n'.join(cards_html)
+
+    def build_members_page(self):
+        """Build the members.html page with all members."""
+        members = self.get_all_members()
+        
+        # Build individual detail pages
+        self.build_member_detail_pages(members)
+        
+        members_content = self.render_member_cards(members)
+        
+        # Generate hero content for members page
+        hero_content = self.build_hero_content('members')
+        
+        # Load and render the members template
+        template = self.jinja_env.get_template('members.html')
+        
+        # Render the template with all data
+        html_content = template.render(
+            site=self.site_config,
+            theme=self.active_theme,
+            hero=hero_content,
+            members_content=members_content
+        )
+        
+        # Write to members.html
+        output_file = self.dist_dir / 'members.html'
+        output_file.write_text(html_content, encoding='utf-8')
+        print(f"Built members.html with {len(members)} members")
     
     def build_index(self):
         """Build the main index.html file."""
@@ -443,6 +600,31 @@ class WebsiteBuilder:
             shutil.copytree(scripts_src, scripts_dest)
             print(f"Copied scripts to {scripts_dest}")
     
+    def copy_css_files(self):
+        """Copy CSS files to output/css directory."""
+        # Create css directory
+        css_dest = self.dist_dir / "css"
+        css_dest.mkdir(exist_ok=True)
+        
+        # Copy shared CSS
+        shared_css_src = self.themes_dir / "shared.css"
+        if shared_css_src.exists():
+            shutil.copy2(shared_css_src, css_dest / "shared.css")
+            print(f"Copied shared.css to {css_dest}")
+        
+        # Copy active theme CSS
+        theme_name = self.theme_config.get('active_theme', 'tailwind')
+        theme_css_src = self.themes_dir / theme_name / f"{theme_name}.css"
+        if theme_css_src.exists():
+            shutil.copy2(theme_css_src, css_dest / f"{theme_name}.css")
+            print(f"Copied {theme_name}.css to {css_dest}")
+        
+        # Copy any additional theme CSS files like bootstrap.css
+        bootstrap_css_src = self.themes_dir / "bootstrap" / "bootstrap.css"
+        if bootstrap_css_src.exists():
+            shutil.copy2(bootstrap_css_src, css_dest / "bootstrap.css")
+            print(f"Copied bootstrap.css to {css_dest}")
+    
     def build(self):
         """Main build function."""
         print("Building Boston Robot Hackers website...")
@@ -450,6 +632,9 @@ class WebsiteBuilder:
         
         # Copy static assets
         self.copy_assets()
+        
+        # Copy CSS files to css directory  
+        self.copy_css_files()
         
         # Generate syntax highlighting CSS
         self.generate_pygments_css('default')
@@ -462,6 +647,9 @@ class WebsiteBuilder:
         
         # Build the projects page
         self.build_projects_page()
+        
+        # Build the members page
+        self.build_members_page()
         
         print("Build complete!")
 
