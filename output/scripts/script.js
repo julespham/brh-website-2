@@ -11,7 +11,7 @@ function loadAllMembers() {
     alert('This would load all member profiles from the members directory');
 }
 
-// Theme switching removed - themes are now build-time only
+// JavaScript functionality for Boston Robot Hackers website
 
 // Smooth scrolling for navigation
 document.addEventListener('DOMContentLoaded', function() {

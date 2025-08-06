@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Build script for Boston Robot Hackers website.
-Uses template-based architecture with themes.
+Uses template-based architecture.
 """
 
 import json
@@ -26,7 +26,6 @@ class WebsiteBuilder:
         else:
             self.root_dir = Path(".")   # Build script is running from root directory
         self.templates_dir = self.root_dir / "templates"
-        self.themes_dir = self.root_dir / "themes"
         self.config_dir = self.root_dir / "config"
         self.content_dir = self.root_dir / "content"
         self.dist_dir = self.root_dir / "output"
@@ -36,15 +35,10 @@ class WebsiteBuilder:
         
         # Load configurations
         self.site_config = self.load_site_config()
-        self.theme_config = self.load_theme_config()
-        self.active_theme = self.load_active_theme()
         
         # Set up Jinja2 environment
-        theme_name = self.theme_config['active_theme']
         template_paths = [
-            str(self.templates_dir / theme_name),  # Theme-specific templates first
-            str(self.templates_dir / "base"),      # Fallback to base templates
-            str(self.themes_dir / theme_name)      # Theme includes (head.html, etc.)
+            str(self.templates_dir),               # Main templates directory
         ]
         self.jinja_env = Environment(
             loader=FileSystemLoader(template_paths)
@@ -57,25 +51,6 @@ class WebsiteBuilder:
             return json.loads(config_file.read_text())
         return {}
     
-    def load_theme_config(self) -> Dict[str, Any]:
-        """Load theme configuration."""
-        config_file = self.themes_dir / "config.json"
-        if config_file.exists():
-            return json.loads(config_file.read_text())
-        return {"active_theme": "squeeze"}
-    
-    def load_active_theme(self) -> Dict[str, Any]:
-        """Load the active theme configuration."""
-        theme_name = self.theme_config.get('active_theme', 'squeeze')
-        theme_file = self.themes_dir / theme_name / "theme.json"
-        
-        if theme_file.exists():
-            theme_data = json.loads(theme_file.read_text())
-            # Flatten the classes into the main theme object
-            if 'classes' in theme_data:
-                theme_data.update(theme_data['classes'])
-            return theme_data
-        return {}
     
     def setup_markdown_processor(self):
         """Set up markdown processor with syntax highlighting."""
@@ -165,8 +140,8 @@ class WebsiteBuilder:
         
         cards_html = []
         for post in posts:
-            # Use basic image classes
-            image_classes = self.active_theme['news_image_classes']
+            # Use default image classes
+            image_classes = "image-base image-square d-flex align-items-center justify-content-center text-white fw-bold"
             
             card_html = template.render(
                 id=post['id'],
@@ -175,7 +150,6 @@ class WebsiteBuilder:
                 text=post['text'],
                 image=post['image'],
                 formatted_date=self.format_date(post['date']),
-                theme=self.active_theme,
                 image_classes=image_classes
             )
             cards_html.append(card_html)
@@ -296,7 +270,6 @@ class WebsiteBuilder:
             # Generate detail page
             html_content = detail_template.render(
                 site=self.site_config,
-                theme=self.active_theme,
                 post=post_with_formatted_date
             )
             
@@ -324,7 +297,6 @@ class WebsiteBuilder:
         # Render the template with all data
         html_content = template.render(
             site=self.site_config,
-            theme=self.active_theme,
             hero=hero_content,
             news_content=news_content
         )
@@ -410,7 +382,6 @@ class WebsiteBuilder:
             # Generate detail page
             html_content = detail_template.render(
                 site=self.site_config,
-                theme=self.active_theme,
                 project=project_with_formatted_date
             )
             
@@ -438,7 +409,6 @@ class WebsiteBuilder:
         # Render the template with all data
         html_content = template.render(
             site=self.site_config,
-            theme=self.active_theme,
             hero=hero_content,
             projects_content=projects_content
         )
@@ -460,7 +430,6 @@ class WebsiteBuilder:
                 text=project['text'],
                 excerpt=project['excerpt'],
                 status=project['metadata'].get('status', 'Unknown'),
-                theme=self.active_theme
             )
             cards_html.append(card_html)
         
@@ -499,7 +468,6 @@ class WebsiteBuilder:
             # Generate detail page
             html_content = detail_template.render(
                 site=self.site_config,
-                theme=self.active_theme,
                 member=member
             )
             
@@ -522,7 +490,6 @@ class WebsiteBuilder:
                 skills=member['metadata'].get('skills', []),
                 card_text=member['metadata'].get('card-text', 'MEMBER'),
                 image=member['metadata'].get('image'),
-                theme=self.active_theme
             )
             cards_html.append(card_html)
         
@@ -546,7 +513,6 @@ class WebsiteBuilder:
         # Render the template with all data
         html_content = template.render(
             site=self.site_config,
-            theme=self.active_theme,
             hero=hero_content,
             members_content=members_content
         )
@@ -574,7 +540,6 @@ class WebsiteBuilder:
         # Render the template with all data
         html_content = template.render(
             site=self.site_config,
-            theme=self.active_theme,
             news_content=news_content,
             hero=hero_content,
             projects_content=projects_content
@@ -612,29 +577,26 @@ class WebsiteBuilder:
         css_dest = self.dist_dir / "css"
         css_dest.mkdir(exist_ok=True)
         
+        # Copy CSS files from consolidated css directory
+        css_src_dir = self.root_dir / "css"
+        
         # Copy shared CSS
-        shared_css_src = self.themes_dir / "shared.css"
+        shared_css_src = css_src_dir / "shared.css"
         if shared_css_src.exists():
             shutil.copy2(shared_css_src, css_dest / "shared.css")
             print(f"Copied shared.css to {css_dest}")
         
-        # Copy active theme CSS
-        theme_name = self.theme_config.get('active_theme', 'squeeze')
-        theme_css_src = self.themes_dir / theme_name / f"{theme_name}.css"
-        if theme_css_src.exists():
-            shutil.copy2(theme_css_src, css_dest / f"{theme_name}.css")
-            print(f"Copied {theme_name}.css to {css_dest}")
+        # Copy main CSS
+        main_css_src = css_src_dir / "main.css"
+        if main_css_src.exists():
+            shutil.copy2(main_css_src, css_dest / "main.css")
+            print(f"Copied main.css to {css_dest}")
         
-        # Copy any additional theme CSS files like bootstrap.css
-        bootstrap_css_src = self.themes_dir / "bootstrap" / "bootstrap.css"
-        if bootstrap_css_src.exists():
-            shutil.copy2(bootstrap_css_src, css_dest / "bootstrap.css")
-            print(f"Copied bootstrap.css to {css_dest}")
     
     def build(self):
         """Main build function."""
         print("Building Boston Robot Hackers website...")
-        print(f"Using theme: {self.theme_config.get('active_theme', 'tailwind')}")
+        print("Using default design")
         
         # Copy static assets
         self.copy_assets()

@@ -11,7 +11,6 @@
 * Look for and eliminate duplicate code or css
 * There should almost never be css or js inside an html file
 * Templates represent different types of page on the web site
-* Themes represent different styles used to render the web site
 * The generator regenerates the complete contents of the output/ directory
 * Claude should not edit the output/ files directly, instead look at generator to see how they are created
 * Github actions are used to produce and github page hosted web site from the output/ directory

@@ -1,20 +1,20 @@
 <!-- Reusable Section Component -->
-<section class="{{ theme.section_classes if theme.section_classes else 'py-3 my-2' }}">
+<section class="mb-3">
     {% if section_title %}
-    <div class="{{ theme.section_header_classes if theme.section_header_classes else 'text-center mb-4' }}">
-        <h2 class="font-telex {{ theme.section_title_classes if theme.section_title_classes else 'h3 mb-2' }}">
+    <div class="mb-3">
+        <h2 class="font-telex h4 fw-normal text-dark mb-1 d-flex align-items-center">
             {% if section_emoji %}<span class="me-2">{{ section_emoji }}</span>{% endif %}
             {{ section_title }}
             {% if section_link %}&nbsp;<a href="{{ section_link }}" class="text-primary small">({{ section_link_text | default('see all') }})</a>{% endif %}
         </h2>
         {% if section_subtitle %}
-        <p class="{{ theme.section_subtitle_classes if theme.section_subtitle_classes else 'text-muted' }}">{{ section_subtitle }}</p>
+        <p class="text-muted">{{ section_subtitle }}</p>
         {% endif %}
     </div>
     {% endif %}
     
     {% if grid_layout %}
-    <div class="{{ theme.card_grid_classes if theme.card_grid_classes else 'row' }}">
+    <div class="row g-2">
         {{ section_content|safe }}
     </div>
     {% else %}
