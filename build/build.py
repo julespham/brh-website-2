@@ -521,6 +521,7 @@ class WebsiteBuilder:
                 role=member['metadata'].get('role', 'Member'),
                 skills=member['metadata'].get('skills', []),
                 card_text=member['metadata'].get('card-text', 'MEMBER'),
+                image=member['metadata'].get('image'),
                 theme=self.active_theme
             )
             cards_html.append(card_html)
