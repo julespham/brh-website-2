@@ -1,0 +1,28 @@
+<!-- Member card - Grid card displaying member info and skills. Reusable for any member listing. -->
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="card h-100 shadow-sm border-0">
+        <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">
+            {% if image %}
+            <img src="{{ image }}" alt="{{ name }}" class="w-100 h-100" style="object-fit: cover;">
+            {% else %}
+            {{ card_text }}
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <h5 class="font-telex card-title h6 fw-normal">
+                <a href="members/{{ id }}.html" class="text-decoration-none">{{ name }}</a>
+            </h5>
+            <p class="card-text text-muted small">{{ role }}</p>
+            {% if skills %}
+            <div class="member-skills">
+                {% for skill in skills[:3] %}
+                <span class="badge bg-light text-dark me-1">{{ skill }}</span>
+                {% endfor %}
+                {% if skills|length > 3 %}
+                <span class="text-muted small">+{{ skills|length - 3 }} more</span>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

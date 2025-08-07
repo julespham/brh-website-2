@@ -1,7 +1,7 @@
 ---
 title: "First BRH Meeting was great!"
-date: 2025-08-01
-image: "images/network.png"
+date: 2025-07-31
+image: "images/robot-logo.png"
 excerpt: "Just a quick summary of the first meeting!"
 highlight: true
 ---

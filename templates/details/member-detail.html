@@ -1,0 +1,62 @@
+<!-- Member detail page - Full member profile with skills, links, and bio. Reusable template pattern for any member. -->
+{% extends 'layouts/detail.html' %}
+
+{% set current_page = 'members' %}
+{% set back_link = 'members.html' %}
+{% set back_text = 'Back to Members' %}
+
+{% block title %}{{ member.title }} - {{ site.title }}{% endblock %}
+
+{% block detail_content %}
+    <article class="member-detail">
+        <div class="row mb-4">
+            <div class="col-md-3 text-center">
+                {% if member.metadata.image %}
+                <img src="../{{ member.metadata.image }}" alt="{{ member.title }}" class="rounded" style="width: 120px; height: 120px; object-fit: cover; margin: 0 auto;">
+                {% else %}
+                <div class="member-avatar bg-secondary rounded d-flex align-items-center justify-content-center text-white fw-bold" style="width: 120px; height: 120px; font-size: 1.5rem; margin: 0 auto;">
+                    {{ member.metadata['card-text']|default('MEMBER') }}
+                </div>
+                {% endif %}
+                {% if member.metadata.featured %}
+                <div class="badge bg-primary mt-2">Featured Member</div>
+                {% endif %}
+            </div>
+            <div class="col-md-9">
+                <h1 class="mb-2">{{ member.title }}</h1>
+                <h5 class="text-muted mb-3">{{ member.metadata.role|default('Member') }}</h5>
+                
+                {% if member.metadata.skills %}
+                <div class="mb-3">
+                    <strong>Skills:</strong>
+                    {% for skill in member.metadata.skills %}
+                    <span class="badge bg-light text-dark me-1">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="row text-muted small">
+                    {% if member.metadata.github %}
+                    <div class="col-md-6 mb-1">
+                        <strong>GitHub:</strong> <a href="{{ member.metadata.github }}" target="_blank">{{ member.metadata.github }}</a>
+                    </div>
+                    {% endif %}
+                    {% if member.metadata.linkedin %}
+                    <div class="col-md-6 mb-1">
+                        <strong>LinkedIn:</strong> <a href="{{ member.metadata.linkedin }}" target="_blank">{{ member.metadata.linkedin }}</a>
+                    </div>
+                    {% endif %}
+                    {% if member.metadata.projects %}
+                    <div class="col-12 mt-2">
+                        <strong>Current Projects:</strong> {{ member.metadata.projects|join(', ') }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            {{ member.content|safe }}
+        </div>
+    </article>
+{% endblock %}

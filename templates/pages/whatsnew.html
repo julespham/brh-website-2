@@ -1,0 +1,15 @@
+<!-- News listing page - Displays all news items with compact cards. Not reusable. -->
+{% extends 'layouts/page.html' %}
+
+{% set current_page = 'news' %}
+{% set is_detail_page = false %}
+
+{% block title %}What's New - {{ site.title }}{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            {{ news_content }}
+        </div>
+    </div>
+{% endblock %}

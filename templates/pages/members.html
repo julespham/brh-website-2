@@ -1,0 +1,17 @@
+<!-- Members listing page - Displays all members in a grid. Not reusable. -->
+{% extends 'layouts/page.html' %}
+
+{% set current_page = 'members' %}
+{% set is_detail_page = false %}
+
+{% block title %}Members - {{ site.title }}{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="row">
+                {{ members_content }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -114,7 +114,7 @@ class WebsiteBuilder:
                 'title': metadata.get('title', metadata.get('name', 'Untitled')),
                 'date': metadata.get('date'),
                 'image': metadata.get('image', ''),  # URL to 512x512 square image (scaled with CSS as needed)
-                'text': metadata.get('text', metadata.get('emoji', 'NEWS')),  # Simple text overlay
+                'text': metadata.get('text', metadata.get('emoji')),  # Simple text overlay
                 'excerpt': metadata.get('excerpt', ''),
                 'content': html_content,
                 'metadata': metadata
@@ -136,7 +136,7 @@ class WebsiteBuilder:
     
     def render_news_cards(self, posts: List[Dict[str, Any]]) -> str:
         """Render news cards using the template."""
-        template = self.jinja_env.get_template('news-card.html')
+        template = self.jinja_env.get_template('cards/news-card.html')
         
         cards_html = []
         for post in posts:
@@ -217,17 +217,12 @@ class WebsiteBuilder:
         # Render news cards
         news_html = self.render_news_cards(highlighted_posts)
         
-        # Save JSON for potential future use
-        output_file = self.dist_dir / 'whatsnew.json'
-        with open(output_file, 'w') as f:
-            json.dump(posts, f, indent=2, ensure_ascii=False)
-        
         print(f"Generated {len(highlighted_posts)} highlighted posts from {len(posts)} total")
         return news_html
     
     def render_compact_news_cards(self, posts):
         """Render compact news cards for the full news page."""
-        template = self.jinja_env.get_template('compact-news-card.html')
+        template = self.jinja_env.get_template('cards/compact-news-card.html')
         cards_html = []
         
         for post in posts:
@@ -256,7 +251,7 @@ class WebsiteBuilder:
     
     def build_news_detail_pages(self, posts):
         """Build individual detail pages for each news item."""
-        detail_template = self.jinja_env.get_template('news-detail.html')
+        detail_template = self.jinja_env.get_template('details/news-detail.html')
         
         for post in posts:
             # Create news detail directory if it doesn't exist
@@ -292,7 +287,7 @@ class WebsiteBuilder:
         hero_content = self.build_hero_content('whatsnew')
         
         # Load and render the whatsnew template
-        template = self.jinja_env.get_template('whatsnew.html')
+        template = self.jinja_env.get_template('pages/whatsnew.html')
         
         # Render the template with all data
         html_content = template.render(
@@ -368,7 +363,7 @@ class WebsiteBuilder:
     
     def build_project_detail_pages(self, projects):
         """Build individual detail pages for each project."""
-        detail_template = self.jinja_env.get_template('project-detail.html')
+        detail_template = self.jinja_env.get_template('details/project-detail.html')
         
         for project in projects:
             # Create project detail directory if it doesn't exist
@@ -404,7 +399,7 @@ class WebsiteBuilder:
         hero_content = self.build_hero_content('projects')
         
         # Load and render the projects template
-        template = self.jinja_env.get_template('projects.html')
+        template = self.jinja_env.get_template('pages/projects.html')
         
         # Render the template with all data
         html_content = template.render(
@@ -420,7 +415,7 @@ class WebsiteBuilder:
     
     def render_project_cards_for_home(self, projects):
         """Render project cards for the home page display."""
-        template = self.jinja_env.get_template('project-card.html')
+        template = self.jinja_env.get_template('cards/project-card.html')
         cards_html = []
         
         for project in projects:
@@ -429,6 +424,7 @@ class WebsiteBuilder:
                 title=project['title'],
                 text=project['text'],
                 excerpt=project['excerpt'],
+                image=project['image'],
                 status=project['metadata'].get('status', 'Unknown'),
             )
             cards_html.append(card_html)
@@ -458,7 +454,7 @@ class WebsiteBuilder:
     
     def build_member_detail_pages(self, members):
         """Build individual detail pages for each member."""
-        detail_template = self.jinja_env.get_template('member-detail.html')
+        detail_template = self.jinja_env.get_template('details/member-detail.html')
         
         for member in members:
             # Create member detail directory if it doesn't exist
@@ -479,7 +475,7 @@ class WebsiteBuilder:
 
     def render_member_cards(self, members):
         """Render member cards for the members page."""
-        template = self.jinja_env.get_template('member-card.html')
+        template = self.jinja_env.get_template('cards/member-card.html')
         cards_html = []
         
         for member in members:
@@ -508,7 +504,7 @@ class WebsiteBuilder:
         hero_content = self.build_hero_content('members')
         
         # Load and render the members template
-        template = self.jinja_env.get_template('members.html')
+        template = self.jinja_env.get_template('pages/members.html')
         
         # Render the template with all data
         html_content = template.render(
@@ -535,7 +531,7 @@ class WebsiteBuilder:
         projects_content = self.render_project_cards_for_home(projects)
         
         # Load and render the main template
-        template = self.jinja_env.get_template('index.html')
+        template = self.jinja_env.get_template('pages/index.html')
         
         # Render the template with all data
         html_content = template.render(
@@ -597,6 +593,12 @@ class WebsiteBuilder:
         """Main build function."""
         print("Building Boston Robot Hackers website...")
         print("Using default design")
+        
+        # Clean output directory for fresh build
+        if self.dist_dir.exists():
+            shutil.rmtree(self.dist_dir)
+        self.dist_dir.mkdir(exist_ok=True)
+        print(f"Cleaned output directory: {self.dist_dir}")
         
         # Copy static assets
         self.copy_assets()

@@ -1,0 +1,23 @@
+<!-- News card - Featured news display with image for home page highlights. Reusable for featured content. -->
+<div class="card mb-3" style="max-width: 975px;">
+    <div class="row g-0 h-100">
+        <div class="col-3 col-md-2 d-flex align-items-stretch p-2">
+            {% if image %}
+            <img src="{{ image }}" class="img-fluid rounded" style="width: 100%; object-fit: cover;" alt="{{ title }}">
+            {% else %}
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-white fw-bold w-100">
+                {% if text %}{{ text }}{% else %}NEWS{% endif %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-9 col-md-10">
+            <div class="card-body py-2">
+                <h5 class="card-title mb-1">
+                    <a href="news/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
+                </h5>
+                <p class="card-text mb-1">{{ excerpt }}</p>
+                <p class="card-text mb-0"><small class="text-body-secondary">{{ formatted_date }}</small></p>
+            </div>
+        </div>
+    </div>
+</div>

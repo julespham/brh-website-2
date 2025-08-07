@@ -1,0 +1,18 @@
+<!-- Compact news card - Small inline news display for listing pages. Reusable for any news listing. -->
+<div class="row border-bottom py-2">
+    <div class="col-auto">
+        {% if image %}
+        <img src="{{ image }}" style="width: 40px; height: 40px; object-fit: cover;" class="rounded" alt="">
+        {% else %}
+        <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-white fw-bold" style="width: 40px; height: 40px; font-size: 0.7rem;">
+        </div>
+        {% endif %}
+    </div>
+    <div class="col">
+        <h6 class="mb-0">
+            <a href="news/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
+        </h6>
+        <p class="text-muted small mb-0">{{ excerpt }}</p>
+        <small class="text-muted">{{ formatted_date }}</small>
+    </div>
+</div>
