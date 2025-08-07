@@ -1,10 +1,14 @@
+<!-- Projects listing page - Displays all projects with details. Not reusable. -->
+<!-- Standard page layout - Extends base with hero section and main_content block. Reusable by listing pages. -->
+<!-- Base layout template - Main HTML structure with navigation, banner, footer. Reusable by all pages. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Boston Robot Hackers</title>
-    <!-- Preload critical images -->
+    <!-- Head component - CSS/JS includes and preloads. Reusable across all pages. -->
+<!-- Preload critical images -->
 <link rel="preload" href="images/robot-logo.png" as="image">
 <link rel="preload" href="images/meetings/meeting1-1.png" as="image">
 
@@ -22,7 +26,7 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <!-- Navigation Bar -->
+        <!-- Navigation component - Main site navigation with active page highlighting. Reusable across all pages. -->
 <div class="nav-bar-thin py-1">
     <div class="container-fluid">
         <ul class="navbar-nav mx-auto d-flex flex-row">
@@ -46,7 +50,7 @@
     </div>
 </div>
         
-        <!-- Header with Banner -->
+        <!-- Site banner component - Displays site title and subtitle. Reusable across all pages. -->
 <header class="banner-header">
     <div class="banner">
         <div>
@@ -57,7 +61,7 @@
 </header>
         
         
-    <!-- Hero Section -->
+    <!-- Hero section component - Displays hero content from markdown. Reusable by pages that need hero sections. -->
 
 <section class="hero text-center py-3 my-2 rounded shadow-lg">
     <div class="hero-section mx-auto">
@@ -77,24 +81,25 @@
                 <div class="row mb-3">
                     <div class="col-md-2">
                         <div class="text-center">
-                            <img src="images/Network.png" class="rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                            <img src="images/projects/dome.png" class="rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                             <div class="small fw-bold mt-2">Dome!</div>
                             <div class="badge bg-secondary mt-1">initial testing</div>
                         </div>
                     </div>
                     <div class="col-md-10">
                         <h3><a href="projects/2025-08-01-dome.html" class="text-decoration-none">Dome ROBOT</a></h3>
-                        <div class="project-content">
-                            <h1 id="dome-robot">Dome Robot</h1>
-<p>A small simple differntial drive robot. This is a third generation of robots that I built at Brandeis. What's different is that I had no help, I built it all with my own two hands (more or less).</p>
-<p>You can read all about it here.</p>
+                        <div class="project-excerpt">
+                            <p>A small simple differential drive robot built from scratch with no external help. Built with ROS2 and Linorobot2</p>
                         </div>
                         <div class="project-meta mt-3 pt-3 border-top">
                             <div class="row text-muted small">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <strong>Started:</strong> August 01, 2025
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <strong>Lead:</strong> Pito Salas
+                                </div>
+                                <div class="col-md-4">
                                     <strong>Team:</strong> 1 members
                                 </div>
                             </div>
@@ -111,7 +116,7 @@
 
     </div>
     
-    <!-- Footer -->
+    <!-- Site footer component - Displays footer text. Reusable across all pages. -->
 <footer class="bg-dark text-light text-center py-2 mt-5">
     <div class="container-fluid">
         <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>

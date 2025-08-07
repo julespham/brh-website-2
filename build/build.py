@@ -340,15 +340,18 @@ class WebsiteBuilder:
                     </div>
                     <div class="col-md-10">
                         <h3><a href="projects/{project['id']}.html" class="text-decoration-none">{project['title']}</a></h3>
-                        <div class="project-content">
-                            {project['content']}
+                        <div class="project-excerpt">
+                            <p>{project['excerpt']}</p>
                         </div>
                         <div class="project-meta mt-3 pt-3 border-top">
                             <div class="row text-muted small">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <strong>Started:</strong> {self.format_date(project['date'])}
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <strong>Lead:</strong> {project['metadata'].get('lead', 'N/A')}
+                                </div>
+                                <div class="col-md-4">
                                     <strong>Team:</strong> {project['metadata'].get('members', 'N/A')} members
                                 </div>
                             </div>

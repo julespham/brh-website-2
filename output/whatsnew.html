@@ -1,10 +1,14 @@
+<!-- News listing page - Displays all news items with compact cards. Not reusable. -->
+<!-- Standard page layout - Extends base with hero section and main_content block. Reusable by listing pages. -->
+<!-- Base layout template - Main HTML structure with navigation, banner, footer. Reusable by all pages. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What's New - Boston Robot Hackers</title>
-    <!-- Preload critical images -->
+    <!-- Head component - CSS/JS includes and preloads. Reusable across all pages. -->
+<!-- Preload critical images -->
 <link rel="preload" href="images/robot-logo.png" as="image">
 <link rel="preload" href="images/meetings/meeting1-1.png" as="image">
 
@@ -22,7 +26,7 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <!-- Navigation Bar -->
+        <!-- Navigation component - Main site navigation with active page highlighting. Reusable across all pages. -->
 <div class="nav-bar-thin py-1">
     <div class="container-fluid">
         <ul class="navbar-nav mx-auto d-flex flex-row">
@@ -46,7 +50,7 @@
     </div>
 </div>
         
-        <!-- Header with Banner -->
+        <!-- Site banner component - Displays site title and subtitle. Reusable across all pages. -->
 <header class="banner-header">
     <div class="banner">
         <div>
@@ -57,7 +61,7 @@
 </header>
         
         
-    <!-- Hero Section -->
+    <!-- Hero section component - Displays hero content from markdown. Reusable by pages that need hero sections. -->
 
 <section class="hero text-center py-3 my-2 rounded shadow-lg">
     <div class="hero-section mx-auto">
@@ -71,7 +75,8 @@
             
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <div class="row border-bottom py-2">
+            <!-- Compact news card - Small inline news display for listing pages. Reusable for any news listing. -->
+<div class="row border-bottom py-2">
     <div class="col-auto">
         
         <img src="images/meeting.png" style="width: 40px; height: 40px; object-fit: cover;" class="rounded" alt="">
@@ -85,10 +90,26 @@
         <small class="text-muted">August 03, 2025</small>
     </div>
 </div>
+<!-- Compact news card - Small inline news display for listing pages. Reusable for any news listing. -->
 <div class="row border-bottom py-2">
     <div class="col-auto">
         
-        <img src="images/network.png" style="width: 40px; height: 40px; object-fit: cover;" class="rounded" alt="">
+        <img src="images/robot-logo.png" style="width: 40px; height: 40px; object-fit: cover;" class="rounded" alt="">
+        
+    </div>
+    <div class="col">
+        <h6 class="mb-0">
+            <a href="news/2025-08-04-second_meeting.html" class="text-decoration-none">Second BRH Meeting September 4 2025!</a>
+        </h6>
+        <p class="text-muted small mb-0">Our second meeting has been scheduled for September 4 at 7:00pm at Artisans Asylum. We're in the process of nailing down the agenda. In the meanwhile though, you can register. Click to find the link.</p>
+        <small class="text-muted">August 01, 2025</small>
+    </div>
+</div>
+<!-- Compact news card - Small inline news display for listing pages. Reusable for any news listing. -->
+<div class="row border-bottom py-2">
+    <div class="col-auto">
+        
+        <img src="images/robot-logo.png" style="width: 40px; height: 40px; object-fit: cover;" class="rounded" alt="">
         
     </div>
     <div class="col">
@@ -96,21 +117,7 @@
             <a href="news/2025-08-02-first_meeting.html" class="text-decoration-none">First BRH Meeting was great!</a>
         </h6>
         <p class="text-muted small mb-0">Just a quick summary of the first meeting!</p>
-        <small class="text-muted">August 01, 2025</small>
-    </div>
-</div>
-<div class="row border-bottom py-2">
-    <div class="col-auto">
-        
-        <img src="images/network.png" style="width: 40px; height: 40px; object-fit: cover;" class="rounded" alt="">
-        
-    </div>
-    <div class="col">
-        <h6 class="mb-0">
-            <a href="news/2025-08-04-second_meeting.html" class="text-decoration-none">Second BRH Meeting September 4 2025!</a>
-        </h6>
-        <p class="text-muted small mb-0">Our second meeting has been scheduled. Details coming soon.</p>
-        <small class="text-muted">August 01, 2025</small>
+        <small class="text-muted">July 31, 2025</small>
     </div>
 </div>
         </div>
@@ -121,7 +128,7 @@
 
     </div>
     
-    <!-- Footer -->
+    <!-- Site footer component - Displays footer text. Reusable across all pages. -->
 <footer class="bg-dark text-light text-center py-2 mt-5">
     <div class="container-fluid">
         <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>

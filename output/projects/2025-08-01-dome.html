@@ -1,10 +1,14 @@
+<!-- Project detail page - Full project description with status, team, and links. Reusable template pattern for any project. -->
+<!-- Detail page layout - Extends base with centered content and back button. Reusable by all detail pages. -->
+<!-- Base layout template - Main HTML structure with navigation, banner, footer. Reusable by all pages. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dome ROBOT - Boston Robot Hackers</title>
-    <!-- Preload critical images -->
+    <!-- Head component - CSS/JS includes and preloads. Reusable across all pages. -->
+<!-- Preload critical images -->
 <link rel="preload" href="../images/robot-logo.png" as="image">
 <link rel="preload" href="../images/meetings/meeting1-1.png" as="image">
 
@@ -22,7 +26,7 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <!-- Navigation Bar -->
+        <!-- Navigation component - Main site navigation with active page highlighting. Reusable across all pages. -->
 <div class="nav-bar-thin py-1">
     <div class="container-fluid">
         <ul class="navbar-nav mx-auto d-flex flex-row">
@@ -46,7 +50,7 @@
     </div>
 </div>
         
-        <!-- Header with Banner -->
+        <!-- Site banner component - Displays site title and subtitle. Reusable across all pages. -->
 <header class="banner-header">
     <div class="banner">
         <div>
@@ -67,7 +71,7 @@
             <div class="col-md-2">
                 <div class="text-center">
                     
-                    <img src="../images/Network.png" class="rounded" style="width: 100px; height: 100px; object-fit: cover;" alt="Dome ROBOT">
+                    <img src="../images/projects/dome.png" class="rounded" style="width: 100px; height: 100px; object-fit: cover;" alt="Dome ROBOT">
                     
                     <div class="fw-bold mt-2">Dome!</div>
                     <div class="badge bg-secondary mt-1">initial testing</div>
@@ -76,7 +80,7 @@
             <div class="col-md-10">
                 <h1 class="mb-2">Dome ROBOT</h1>
                 
-                <p class="lead">A small simple differential drive robot built from scratch with no external help.</p>
+                <p class="lead">A small simple differential drive robot built from scratch with no external help. Built with ROS2 and Linorobot2</p>
                 
                 
                 <div class="row text-muted small mb-3">
@@ -101,9 +105,15 @@
         </div>
         
         <div class="content">
-            <h1 id="dome-robot">Dome Robot</h1>
-<p>A small simple differntial drive robot. This is a third generation of robots that I built at Brandeis. What's different is that I had no help, I built it all with my own two hands (more or less).</p>
-<p>You can read all about it here.</p>
+            <p>A small simple differntial drive robot. This is a third generation of robots that I built at Brandeis. What's different is that I had no help, I built it all with my own two hands (more or less). </p>
+<h3 id="software">Software</h3>
+<p><a href="https://docs.ros.org/en/jazzy/index.html">ROS2 Jazzy</a>. I am using the Linorobot2 package of code and instructions which I highly recommend. There is a <a href="https://github.com/hippo5329/linorobot2">fork of Linorobot2</a> that supports ESP32. On top of that is <a href="https://github.com/campusrover/dome">my own code and configuration</a>.</p>
+<h3 id="hardware">Hardware</h3>
+<p>As mentioned it is a simple differential drive robot. For compute there is a Rasberry Pi 4B+ which is connected by USB to an ESP32 processor. The processor is on the Waveshare General Driver For Robots which is a handy development board that has a bunch of features. The ones I use are the ESP32, IMU, Power management and Motor Controllers.</p>
+<p><img src="../images/projects/dome.png" alt="Sample image" style="float: left; margin: 20px 20px 20px 0; border-radius: 8px; height: 250px;"></p>
+<p>Viewed from above, there are two circular plates made from clear acrylic. One interesting idea I am playing with is that there is a grid of holes on 25mm centers across the whole circular plate. Anything mounted on the robot gets a 3d-printed adapter which has 25mm center holes as well as accurate holes or other brackerts depending on the device. This applies to the raspberry Pi, the WaveShare board, the Lidar, but also the battery holder, the little control panel and more.</p>
+<p><img src="../images/projects/caster.jpeg" alt="Another sample image" style="float: right; margin: 0 0 20px 20px; border-radius: 12px; height: 250px"></p>
+<p>I went nuts with 3d Printing. I couldn't find a caster just the right side so I made this one. It is all 3d printed, and has two ballbearings. It works beautifully, at least so far, indoors. And the really nice thing is that if I need to change its height a little (which I do) I can just 3d Print a new part.</p>
         </div>
     </article>
 
@@ -118,7 +128,7 @@
 
     </div>
     
-    <!-- Footer -->
+    <!-- Site footer component - Displays footer text. Reusable across all pages. -->
 <footer class="bg-dark text-light text-center py-2 mt-5">
     <div class="container-fluid">
         <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>

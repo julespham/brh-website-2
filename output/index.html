@@ -1,10 +1,14 @@
+<!-- Home page template - Main landing page with news and projects sections. Not reusable. -->
+<!-- Home page layout - Extends base with hero section and sections block. Used only by index.html. -->
+<!-- Base layout template - Main HTML structure with navigation, banner, footer. Reusable by all pages. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boston Robot Hackers</title>
-    <!-- Preload critical images -->
+    <!-- Head component - CSS/JS includes and preloads. Reusable across all pages. -->
+<!-- Preload critical images -->
 <link rel="preload" href="images/robot-logo.png" as="image">
 <link rel="preload" href="images/meetings/meeting1-1.png" as="image">
 
@@ -22,7 +26,7 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <!-- Navigation Bar -->
+        <!-- Navigation component - Main site navigation with active page highlighting. Reusable across all pages. -->
 <div class="nav-bar-thin py-1">
     <div class="container-fluid">
         <ul class="navbar-nav mx-auto d-flex flex-row">
@@ -46,7 +50,7 @@
     </div>
 </div>
         
-        <!-- Header with Banner -->
+        <!-- Site banner component - Displays site title and subtitle. Reusable across all pages. -->
 <header class="banner-header">
     <div class="banner">
         <div>
@@ -57,7 +61,7 @@
 </header>
         
         
-    <!-- Hero Section -->
+    <!-- Hero section component - Displays hero content from markdown. Reusable by pages that need hero sections. -->
 
 <section class="hero text-center py-3 my-2 rounded shadow-lg">
     <div class="hero-section mx-auto">
@@ -79,7 +83,7 @@
     
     
     
-    <!-- Reusable Section Component -->
+    <!-- Section component - Displays titled sections with optional emoji/link. Highly reusable for any page sections. -->
 <section class="mb-3">
     
     <div class="mb-3">
@@ -96,65 +100,59 @@
     
     
     <div class="col-12">
-        <div class="card mb-2" style="transform: scale(0.8); transform-origin: left top; margin-bottom: -20%;">
-    <div class="row g-0">
-        <div class="col-auto">
+        <!-- News card - Featured news display with image for home page highlights. Reusable for featured content. -->
+<div class="card mb-3" style="max-width: 975px;">
+    <div class="row g-0 h-100">
+        <div class="col-3 col-md-2 d-flex align-items-stretch p-2">
             
-            <img src="images/meeting.png" class="rounded-start" style="width: 120px; height: 120px; object-fit: cover;" alt="">
-            
-            <div class="text-center small fw-bold mt-1" style="width: 120px;">NEWS</div>
-            
+            <img src="images/meeting.png" class="img-fluid rounded" style="width: 100%; object-fit: cover;" alt="Montly Meetings">
             
         </div>
-        <div class="col">
+        <div class="col-9 col-md-10">
             <div class="card-body py-2">
                 <h5 class="card-title mb-1">
                     <a href="news/2025-08-03-monthly-meetings.html" class="text-decoration-none">Montly Meetings</a>
                 </h5>
-                <p class="card-text">As we are still a very new club we are still figuring out how our meetings work. Here is our current approach. We meet about once a month, around the first Thursday of the month. The meetings are always on a Thursday from 7:00pm to 9:00pm. Our meetings happen at the Artisans Asylum in Boston (Alston) Massachusetts.</p>
-                <p class="card-text"><small class="text-muted">August 03, 2025</small></p>
+                <p class="card-text mb-1">As we are still a very new club we are still figuring out how our meetings work. Here is our current approach. We meet about once a month, around the first Thursday of the month. The meetings are always on a Thursday from 7:00pm to 9:00pm. Our meetings happen at the Artisans Asylum in Boston (Alston) Massachusetts.</p>
+                <p class="card-text mb-0"><small class="text-body-secondary">August 03, 2025</small></p>
             </div>
         </div>
     </div>
 </div>
-<div class="card mb-2" style="transform: scale(0.8); transform-origin: left top; margin-bottom: -20%;">
-    <div class="row g-0">
-        <div class="col-auto">
+<!-- News card - Featured news display with image for home page highlights. Reusable for featured content. -->
+<div class="card mb-3" style="max-width: 975px;">
+    <div class="row g-0 h-100">
+        <div class="col-3 col-md-2 d-flex align-items-stretch p-2">
             
-            <img src="images/network.png" class="rounded-start" style="width: 120px; height: 120px; object-fit: cover;" alt="">
-            
-            <div class="text-center small fw-bold mt-1" style="width: 120px;">NEWS</div>
-            
+            <img src="images/robot-logo.png" class="img-fluid rounded" style="width: 100%; object-fit: cover;" alt="Second BRH Meeting September 4 2025!">
             
         </div>
-        <div class="col">
-            <div class="card-body py-2">
-                <h5 class="card-title mb-1">
-                    <a href="news/2025-08-02-first_meeting.html" class="text-decoration-none">First BRH Meeting was great!</a>
-                </h5>
-                <p class="card-text">Just a quick summary of the first meeting!</p>
-                <p class="card-text"><small class="text-muted">August 01, 2025</small></p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card mb-2" style="transform: scale(0.8); transform-origin: left top; margin-bottom: -20%;">
-    <div class="row g-0">
-        <div class="col-auto">
-            
-            <img src="images/network.png" class="rounded-start" style="width: 120px; height: 120px; object-fit: cover;" alt="">
-            
-            <div class="text-center small fw-bold mt-1" style="width: 120px;">NEWS</div>
-            
-            
-        </div>
-        <div class="col">
+        <div class="col-9 col-md-10">
             <div class="card-body py-2">
                 <h5 class="card-title mb-1">
                     <a href="news/2025-08-04-second_meeting.html" class="text-decoration-none">Second BRH Meeting September 4 2025!</a>
                 </h5>
-                <p class="card-text">Our second meeting has been scheduled. Details coming soon.</p>
-                <p class="card-text"><small class="text-muted">August 01, 2025</small></p>
+                <p class="card-text mb-1">Our second meeting has been scheduled for September 4 at 7:00pm at Artisans Asylum. We're in the process of nailing down the agenda. In the meanwhile though, you can register. Click to find the link.</p>
+                <p class="card-text mb-0"><small class="text-body-secondary">August 01, 2025</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- News card - Featured news display with image for home page highlights. Reusable for featured content. -->
+<div class="card mb-3" style="max-width: 975px;">
+    <div class="row g-0 h-100">
+        <div class="col-3 col-md-2 d-flex align-items-stretch p-2">
+            
+            <img src="images/robot-logo.png" class="img-fluid rounded" style="width: 100%; object-fit: cover;" alt="First BRH Meeting was great!">
+            
+        </div>
+        <div class="col-9 col-md-10">
+            <div class="card-body py-2">
+                <h5 class="card-title mb-1">
+                    <a href="news/2025-08-02-first_meeting.html" class="text-decoration-none">First BRH Meeting was great!</a>
+                </h5>
+                <p class="card-text mb-1">Just a quick summary of the first meeting!</p>
+                <p class="card-text mb-0"><small class="text-body-secondary">July 31, 2025</small></p>
             </div>
         </div>
     </div>
@@ -171,7 +169,7 @@
     
     
     
-    <!-- Reusable Section Component -->
+    <!-- Section component - Displays titled sections with optional emoji/link. Highly reusable for any page sections. -->
 <section class="mb-3">
     
     <div class="mb-3">
@@ -188,15 +186,24 @@
     
     
     <div class="row g-2">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="card h-100 shadow-sm border-0">
-        <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">Dome!</div>
-        <div class="card-body">
-            <h5 class="font-telex card-title h6 fw-normal">
-                <a href="projects/2025-08-01-dome.html" class="text-decoration-none">Dome ROBOT</a>
-            </h5>
-            <p class="card-text text-muted small">A small simple differential drive robot built from scratch with no external help.</p>
-            <div class="small text-muted fw-medium">Status: initial testing</div>
+        <!-- Project card - Horizontal card displaying project info and status. Reusable for any project listing. -->
+<div class="col-lg-6 col-md-12 mb-3">
+    <div class="card h-100">
+        <div class="row g-0 h-100">
+            <div class="col-3 col-md-2 d-flex align-items-stretch p-2">
+                
+                <img src="images/projects/dome.png" class="img-fluid rounded" style="width: 100%; object-fit: cover;" alt="Dome ROBOT">
+                
+            </div>
+            <div class="col-9 col-md-10">
+                <div class="card-body py-2">
+                    <h5 class="card-title mb-1">
+                        <a href="projects/2025-08-01-dome.html" class="text-decoration-none">Dome ROBOT</a>
+                    </h5>
+                    <p class="card-text mb-1">A small simple differential drive robot built from scratch with no external help. Built with ROS2 and Linorobot2</p>
+                    <p class="card-text mb-0"><small class="text-body-secondary">Status: initial testing</small></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -209,7 +216,7 @@
 
     </div>
     
-    <!-- Footer -->
+    <!-- Site footer component - Displays footer text. Reusable across all pages. -->
 <footer class="bg-dark text-light text-center py-2 mt-5">
     <div class="container-fluid">
         <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>

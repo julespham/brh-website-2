@@ -1,10 +1,14 @@
+<!-- Members listing page - Displays all members in a grid. Not reusable. -->
+<!-- Standard page layout - Extends base with hero section and main_content block. Reusable by listing pages. -->
+<!-- Base layout template - Main HTML structure with navigation, banner, footer. Reusable by all pages. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Members - Boston Robot Hackers</title>
-    <!-- Preload critical images -->
+    <!-- Head component - CSS/JS includes and preloads. Reusable across all pages. -->
+<!-- Preload critical images -->
 <link rel="preload" href="images/robot-logo.png" as="image">
 <link rel="preload" href="images/meetings/meeting1-1.png" as="image">
 
@@ -22,7 +26,7 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <!-- Navigation Bar -->
+        <!-- Navigation component - Main site navigation with active page highlighting. Reusable across all pages. -->
 <div class="nav-bar-thin py-1">
     <div class="container-fluid">
         <ul class="navbar-nav mx-auto d-flex flex-row">
@@ -46,7 +50,7 @@
     </div>
 </div>
         
-        <!-- Header with Banner -->
+        <!-- Site banner component - Displays site title and subtitle. Reusable across all pages. -->
 <header class="banner-header">
     <div class="banner">
         <div>
@@ -57,7 +61,7 @@
 </header>
         
         
-    <!-- Hero Section -->
+    <!-- Hero section component - Displays hero content from markdown. Reusable by pages that need hero sections. -->
 
 <section class="hero text-center py-3 my-2 rounded shadow-lg">
     <div class="hero-section mx-auto">
@@ -72,7 +76,8 @@
     <div class="row">
         <div class="col-lg-10 mx-auto">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <!-- Member card - Grid card displaying member info and skills. Reusable for any member listing. -->
+<div class="col-lg-3 col-md-4 col-sm-6">
     <div class="card h-100 shadow-sm border-0">
         <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">
             
@@ -108,7 +113,7 @@
 
     </div>
     
-    <!-- Footer -->
+    <!-- Site footer component - Displays footer text. Reusable across all pages. -->
 <footer class="bg-dark text-light text-center py-2 mt-5">
     <div class="container-fluid">
         <p class="mb-0">© 2025 Boston Robot Hackers. Building the future, one robot at a time.</p>
