@@ -2,7 +2,6 @@
 title: "New Member Orientation"
 date: 2025-07-25
 image: "images/robot.png"
-text: "NEWS"
 excerpt: "Join us this Saturday for orientation covering shop safety, tool usage, and project guidelines. Perfect for newcomers to our community."
 highlight: false
 ---
