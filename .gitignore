@@ -14,7 +14,7 @@ venv/
 uv.lock
 
 # Generated files
-generated/
+output/
 
 # OS
 .DS_Store
