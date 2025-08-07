@@ -521,6 +521,37 @@ class WebsiteBuilder:
         output_file.write_text(html_content, encoding='utf-8')
         print(f"Built members.html with {len(members)} members")
     
+    def build_about_page(self):
+        """Build the about.html page with about content."""
+        # Process about content
+        about_file = self.content_dir / 'about.md'
+        if not about_file.exists():
+            print(f"Warning: {about_file} not found")
+            about_content = "<p>About content not found.</p>"
+        else:
+            # Set up markdown processor
+            md_processor = self.setup_markdown_processor()
+            about_data = self.process_markdown_file(about_file, md_processor)
+            about_content = about_data['content'] if about_data else "<p>Error processing about content.</p>"
+        
+        # Generate hero content for about page
+        hero_content = self.build_hero_content('about')
+        
+        # Load and render the about template
+        template = self.jinja_env.get_template('pages/about.html')
+        
+        # Render the template with all data
+        html_content = template.render(
+            site=self.site_config,
+            hero=hero_content,
+            about_content=about_content
+        )
+        
+        # Write to about.html
+        output_file = self.dist_dir / 'about.html'
+        output_file.write_text(html_content, encoding='utf-8')
+        print(f"Built about.html")
+    
     def build_index(self):
         """Build the main index.html file."""
         # Generate news content
@@ -623,6 +654,9 @@ class WebsiteBuilder:
         
         # Build the members page
         self.build_members_page()
+        
+        # Build the about page
+        self.build_about_page()
         
         print("Build complete!")
 
