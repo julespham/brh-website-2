@@ -34,3 +34,4 @@ Currently BRH is led by Pito Salas. You can [contact me via LinkedIn](https://ww
 
 [Click HERE](https://forms.gle/x3gpWaGvwrKKrMEL8) if you want to receive an invite to join!
 
+<hr/>
