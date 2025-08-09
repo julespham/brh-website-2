@@ -113,3 +113,19 @@
 .card .card-body { padding: 1rem; }
 .card img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
 @media (max-width: 575px) { .card img { aspect-ratio: 1 / 1; } }
+
+/* Standardize What's New images */
+.news-card img,
+.news-card .bg-secondary {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+/* Force the news card image column to a consistent size */
+.news-card .col-3,
+.news-card .col-md-2 {
+  aspect-ratio: 1 / 1; /* square images */
+  max-height: 100px;   /* adjust as needed */
+}
