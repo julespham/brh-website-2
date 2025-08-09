@@ -126,6 +126,9 @@
 /* Force the news card image column to a consistent size */
 .news-card .col-3,
 .news-card .col-md-2 {
-  aspect-ratio: 1 / 1; /* square images */
-  max-height: 100px;   /* adjust as needed */
+  flex: 0 0 auto;       /* fixed size, no shrink */
+  display: flex;        /* allow child to fill height */
+  align-items: stretch; /* match child height */
+  aspect-ratio: 1 / 1;  /* square thumbnails */
+  max-height: 100px;    /* adjust as needed */
 }
