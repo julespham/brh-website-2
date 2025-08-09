@@ -13,4 +13,4 @@ SEPTEMBER 4th 2025
 ```
 
 ### Agenda still being prepared
-[Go To EventBrige to register for the event](https://www.eventbrite.com/e/1489641520889?aff=oddtdtcreator)
+[Go To EventBrite to register for the event](https://www.eventbrite.com/e/1489641520889?aff=oddtdtcreator)
