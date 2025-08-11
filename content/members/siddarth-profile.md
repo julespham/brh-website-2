@@ -1,7 +1,7 @@
 ---
 name: "Siddarth Dayasagar"
 role: "Roboticist and Space Enthusiast"
-image: "images/people/siddarth.png"
+image: "images/people/siddarth.jpeg"
 featured: true
 skills: ["ROS 2", "C++", "Python"]
 github: "https://github.com/siddarth09"
