@@ -1,5 +1,5 @@
 ---
-title: Talk: Space Station OS
+title: "Talk: Space Station OS"
 date: 2025-08-11
 excerpt: Space Station OS - Open source OS for next generation space stations using ROS2 
 highlight: true
