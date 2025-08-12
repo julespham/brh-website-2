@@ -1,18 +1,23 @@
 <!-- Compact news card - Small inline news display for listing pages. Reusable for any news listing. -->
-<div class="row border-bottom py-2">
-    <div class="col-auto">
-        {% if image %}
-        <img src="{{ image }}" style="width: 40px; height: 40px; object-fit: cover;" class="rounded" alt="">
-        {% else %}
-        <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-white fw-bold" style="width: 40px; height: 40px; font-size: 0.7rem;">
+<div class="card mb-3">
+    <div class="row g-0 h-100">
+        <div class="col-auto d-flex align-items-stretch p-3">
+            {% if image %}
+            <img src="{{ image }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius);" alt="">
+            {% else %}
+            <div class="bg-secondary d-flex align-items-center justify-content-center text-white fw-bold" style="width: 80px; height: 80px; font-size: 0.9rem; border-radius: var(--radius);">
+                NEWS
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
-    </div>
-    <div class="col">
-        <h6 class="mb-0">
-            <a href="news/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
-        </h6>
-        <p class="text-muted small mb-0">{{ excerpt }}</p>
-        <small class="text-muted">{{ formatted_date }}</small>
+        <div class="col">
+            <div class="card-body py-3">
+                <h6 class="card-title mb-1">
+                    <a href="news/{{ id }}.html" class="text-decoration-none">{{ title }}</a>
+                </h6>
+                <p class="card-text text-muted small mb-1">{{ excerpt }}</p>
+                <small class="text-muted">{{ formatted_date }}</small>
+            </div>
+        </div>
     </div>
 </div>

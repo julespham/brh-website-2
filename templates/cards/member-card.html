@@ -1,9 +1,9 @@
 <!-- Member card - Grid card displaying member info and skills. Reusable for any member listing. -->
-<div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="card h-100 shadow-sm border-0">
+<div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+    <div class="card h-100 shadow-sm{% if metadata.opentowork %} open-to-work{% endif %}">
         <div class="image-base image-square d-flex align-items-center justify-content-center text-white fw-bold">
             {% if image %}
-            <img src="{{ image }}" alt="{{ name }}" class="w-100 h-100" style="object-fit: cover;">
+            <img src="{{ image }}" alt="{{ name }}">
             {% else %}
             {{ card_text }}
             {% endif %}
