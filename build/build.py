@@ -489,6 +489,7 @@ class WebsiteBuilder:
                 skills=member['metadata'].get('skills', []),
                 card_text=member['metadata'].get('card-text', 'MEMBER'),
                 image=member['metadata'].get('image'),
+                metadata=member['metadata'],
             )
             cards_html.append(card_html)
         
