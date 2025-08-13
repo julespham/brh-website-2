@@ -1,12 +1,12 @@
 ---
 name: "Hariharan Sureshkumar"
 role: "Roboticist & Computer Vision Researcher"
-image: "images/people/hariharan_sureshkumar.png"
+image: "images/people/hari.png"
 featured: true
 skills: ["Computer Vision", "Physics based vision", "Robotic Perception", "RL", "ROS"]
 github: "https://github.com/hxriharan"
 linkedin: "https://www.linkedin.com/in/hariharan-suresh/"
-opentowork: False
+opentowork: false
 ---
 I am a Master's student in Robotics at Northeastern University, Khoury College of Computer Sciences, specializing in computer vision and robotic perception. My research focuses on vision-only sensing for robotics, including projects on spectral ratio estimation, multi-illuminant color constancy, and vision-only based perception.  
 
