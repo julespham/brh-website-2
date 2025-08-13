@@ -16,7 +16,7 @@
             {% if skills %}
             <div class="member-skills">
                 {% for skill in skills[:3] %}
-                <span class="badge bg-light text-dark me-1">{{ skill }}</span>
+                <span class="skill-badge">{{ skill }}</span>
                 {% endfor %}
                 {% if skills|length > 3 %}
                 <span class="text-muted small">+{{ skills|length - 3 }} more</span>
