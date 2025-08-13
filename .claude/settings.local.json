@@ -9,7 +9,8 @@
       "Bash(uv run:*)",
       "Bash(mv:*)",
       "Bash(git add:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(open:*)"
     ],
     "deny": []
   }
