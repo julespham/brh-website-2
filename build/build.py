@@ -36,8 +36,7 @@ class WebsiteBuilder:
         # Load configurations
         self.site_config = self.load_site_config()
         
-        # Load CTA content
-        self.cta_content = self.load_cta_content()
+        # CTA content removed - now included directly in hero markdown
         
         # Set up Jinja2 environment
         template_paths = [
@@ -54,21 +53,6 @@ class WebsiteBuilder:
             return json.loads(config_file.read_text())
         return {}
     
-    def load_cta_content(self) -> Dict[str, Any]:
-        """Load CTA content from markdown file."""
-        cta_file = self.content_dir / 'cta.md'
-        if not cta_file.exists():
-            return {'content': ''}
-        
-        # Set up markdown processor
-        md_processor = self.setup_markdown_processor()
-        
-        # Process CTA markdown file
-        cta_data = self.process_markdown_file(cta_file, md_processor)
-        if cta_data:
-            return {'content': cta_data['content']}
-        
-        return {'content': ''}
     
     
     def setup_markdown_processor(self):
@@ -285,7 +269,6 @@ class WebsiteBuilder:
             html_content = detail_template.render(
                 site=self.site_config,
                 post=post_with_formatted_date,
-                cta=self.cta_content
             )
             
             # Write individual detail page
@@ -313,8 +296,7 @@ class WebsiteBuilder:
         html_content = template.render(
             site=self.site_config,
             hero=hero_content,
-            news_content=news_content,
-            cta=self.cta_content
+            news_content=news_content
         )
         
         # Write to whatsnew.html
@@ -402,7 +384,6 @@ class WebsiteBuilder:
             html_content = detail_template.render(
                 site=self.site_config,
                 project=project_with_formatted_date,
-                cta=self.cta_content
             )
             
             # Write individual detail page
@@ -431,7 +412,6 @@ class WebsiteBuilder:
             site=self.site_config,
             hero=hero_content,
             projects_content=projects_content,
-            cta=self.cta_content
         )
         
         # Write to projects.html
@@ -491,7 +471,6 @@ class WebsiteBuilder:
             html_content = detail_template.render(
                 site=self.site_config,
                 member=member,
-                cta=self.cta_content
             )
             
             # Write individual detail page
@@ -539,7 +518,6 @@ class WebsiteBuilder:
             site=self.site_config,
             hero=hero_content,
             members_content=members_content,
-            cta=self.cta_content
         )
         
         # Write to members.html
@@ -571,7 +549,6 @@ class WebsiteBuilder:
             site=self.site_config,
             hero=hero_content,
             about_content=about_content,
-            cta=self.cta_content
         )
         
         # Write to about.html
@@ -600,7 +577,6 @@ class WebsiteBuilder:
             news_content=news_content,
             hero=hero_content,
             projects_content=projects_content,
-            cta=self.cta_content
         )
         
         # Write the generated HTML
