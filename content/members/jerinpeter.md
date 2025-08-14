@@ -1,7 +1,7 @@
 ---
 name: "Jerin Peter"
 role: "Robotics Engineer | Control & Navigation Specialist | ROS Developer | Maker"
-image: "images/people/jerenpeter.png"
+image: "images/people/jerenpeter.jpg"
 featured: true
 skills: ["ROS", "Robotics Engineering", "Autonomous Navigation", "SLAM"]
 portfolio website: "https://jerinpeter.github.io/"
