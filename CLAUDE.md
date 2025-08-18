@@ -23,5 +23,6 @@
 * Use python classes where apporpriate
 * No methods or functions longer than 35 lines
 * No source files longer than 400 lines
+* No html or css inside of python source files. Very small exceptions are permitted
 
 
