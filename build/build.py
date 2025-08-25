@@ -326,43 +326,15 @@ class WebsiteBuilder:
         return projects
     
     def render_projects_content(self, projects):
-        """Render projects as full content articles instead of cards."""
+        """Render projects as full content articles using template."""
+        template = self.jinja_env.get_template('cards/project-listing-item.html')
         content_sections = []
         
         for project in projects:
-            # Create a full article section for each project
-            section_html = f'''
-            <article class="mb-5 pb-4 border-bottom">
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="text-center">
-                            <img src="{project['image']}" class="rounded" style="width: 100%; height: 200px; object-fit: contain;" alt="">
-                            <div class="small fw-bold mt-2">{project['text']}</div>
-                            <div class="badge bg-secondary mt-1">{project['metadata'].get('status', 'Unknown')}</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h3><a href="projects/{project['id']}.html" class="text-decoration-none">{project['title']}</a></h3>
-                        <div class="project-excerpt">
-                            <p>{project['excerpt']}</p>
-                        </div>
-                        <div class="project-meta mt-3 pt-3 border-top">
-                            <div class="row text-muted small">
-                                <div class="col-md-6">
-                                    <strong>Started:</strong> {self.format_date(project['date'])}
-                                </div>
-                                <div class="col-md-6">
-                                    <strong>Lead:</strong> {project['metadata'].get('lead', 'N/A')}
-                                </div>
-                                <div class="col-md-12 mt-2">
-                                    <strong>Team:</strong> {project['metadata'].get('members', 'N/A')} members
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            '''
+            section_html = template.render(
+                project=project,
+                formatted_date=self.format_date(project['date'])
+            )
             content_sections.append(section_html)
         
         return '\n'.join(content_sections)

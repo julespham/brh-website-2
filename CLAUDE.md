@@ -15,7 +15,7 @@
 * Claude should not edit the output/ files directly, instead look at generator to see how they are created
 * Github actions are used to produce and github page hosted web site from the output/ directory
 
-## Key Coding Style REquirements
+## Key Coding Style Requirements
 
 * Code in python
 * Always look for a well supported package to implement a feature
