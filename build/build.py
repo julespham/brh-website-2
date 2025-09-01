@@ -527,6 +527,48 @@ class WebsiteBuilder:
         output_file = self.dist_dir / 'about.html'
         output_file.write_text(html_content, encoding='utf-8')
         print(f"Built about.html")
+
+    def build_nextmeeting_page(self):
+        """Build the nextmeeting.html page with nextmeeting content."""
+        # Process nextmeeting content
+        nextmeeting_file = self.content_dir / 'nextmeeting.md'
+        if not nextmeeting_file.exists():
+            print(f"Warning: {nextmeeting_file} not found")
+            nextmeeting_content = "<p>Next meeting content not found.</p>"
+        else:
+            # Set up markdown processor
+            md_processor = self.setup_markdown_processor()
+            nextmeeting_data = self.process_markdown_file(nextmeeting_file, md_processor)
+            nextmeeting_content = nextmeeting_data['content'] if nextmeeting_data else "<p>Error processing next meeting content.</p>"
+        
+        # Generate hero content (use nextmeeting title and subtitle from markdown)
+        if nextmeeting_data:
+            hero_content = {
+                'hero_title': nextmeeting_data['title'],
+                'hero_subtitle': nextmeeting_data['metadata'].get('subtitle', ''),
+                'hero_content': ''
+            }
+        else:
+            hero_content = {
+                'hero_title': 'Next Meeting',
+                'hero_subtitle': '',
+                'hero_content': ''
+            }
+        
+        # Load and render the nextmeeting template
+        template = self.jinja_env.get_template('pages/nextmeeting.html')
+        
+        # Render the template with all data
+        html_content = template.render(
+            site=self.site_config,
+            hero=hero_content,
+            nextmeeting_content=nextmeeting_content
+        )
+        
+        # Write to nextmeeting.html
+        output_file = self.dist_dir / 'nextmeeting.html'
+        output_file.write_text(html_content, encoding='utf-8')
+        print(f"Built nextmeeting.html")
     
     def build_index(self):
         """Build the main index.html file."""
@@ -633,6 +675,9 @@ class WebsiteBuilder:
         
         # Build the about page
         self.build_about_page()
+        
+        # Build the next meeting page
+        self.build_nextmeeting_page()
         
         print("Build complete!")
 
