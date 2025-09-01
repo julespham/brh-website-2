@@ -9,7 +9,7 @@ excerpt: Information about our next meeting
 * Where: [Artisans Asylum](https://www.artisansasylum.com) (96 Holton Street, Boston, MA 02135))
 * Register: [Register](https://www.eventbrite.com/e/boston-robot-hackers-monthly-meeting-tickets-1557040904259?aff=oddtdtcreator)
 
-**We hope that you will join us for our next meeting. **
+**We hope that you will join us for our next meeting.**
 
 ## Agenda
 
