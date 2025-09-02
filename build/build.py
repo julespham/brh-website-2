@@ -565,10 +565,12 @@ class WebsiteBuilder:
             nextmeeting_content=nextmeeting_content
         )
         
-        # Write to nextmeeting.html
-        output_file = self.dist_dir / 'nextmeeting.html'
+        # Write to nextmeeting/index.html
+        nextmeeting_dir = self.dist_dir / 'nextmeeting'
+        nextmeeting_dir.mkdir(exist_ok=True)
+        output_file = nextmeeting_dir / 'index.html'
         output_file.write_text(html_content, encoding='utf-8')
-        print(f"Built nextmeeting.html")
+        print(f"Built nextmeeting/index.html")
     
     def build_index(self):
         """Build the main index.html file."""
