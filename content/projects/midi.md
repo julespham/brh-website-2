@@ -1,6 +1,6 @@
 ---
 title: MIDI Blinky
-date: 2018
+date: 2018-01-01
 status: Completed, in as much as anything is completed.
 image: images/projects/midi_blinky_box.png
 text: MIDI Blinky
@@ -10,9 +10,6 @@ github:
 excerpt: A light organ for my organ
 ---
 Arduino project reads a MIDI keyboard outputs, then lights up a Neopixel strip in the corresponding location.  Various options include what color to display, and decay time.  I like blinky lights.
-
-<img src="../images/projects/midi_blinky_box.png" alt="Sample image" style="float: left; margin: 20px 20px 20px 0; border-radius: 8px; height: 250px;">
-
 
 I 3d printed a case for it - a clam-shell box with a build-in hinge that prints in place, one of my advanced designs with Tinkercad.
 

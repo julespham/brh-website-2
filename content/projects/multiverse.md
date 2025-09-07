@@ -1,6 +1,6 @@
 ---
 title: You In The Dog Multiverse
-date: 2010
+date: 2010-01-01
 status: Done and done.
 image: images/projects/you_in_the_dog_multiverse.png
 text: You In The Dog Multiverse
