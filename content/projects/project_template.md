@@ -19,7 +19,6 @@ A small simple differential drive robot. This is a third generation of robots th
 
 As mentioned it is a simple differential drive robot. For compute there is a Raspberry Pi 4B+ which is connected by USB to an ESP32 processor. The processor is on the Waveshare General Driver For Robots which is a handy development board that has a bunch of features. The ones I use are the ESP32, IMU, Power management and Motor Controllers.
 
-
 <img src="../images/projects/dome.png" alt="Sample image" style="float: left; margin: 20px 20px 20px 0; border-radius: 8px; height: 250px;">
 
 Viewed from above, there are two circular plates made from clear acrylic. One interesting idea I am playing with is that there is a grid of holes on 25mm centers across the whole circular plate. Anything mounted on the robot gets a 3d-printed adapter which has 25mm center holes as well as accurate holes or other brackets depending on the device. This applies to the raspberry Pi, the WaveShare board, the Lidar, but also the battery holder, the little control panel and more.
