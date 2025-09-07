@@ -58,9 +58,12 @@ class WebsiteBuilder:
         # Define content types
         self.content_types = {
             'news': ContentType('news', 'news', output_filename='whatsnew.html', 
-                              page_template='pages/whatsnew.html'),
-            'projects': ContentType('projects', 'projects'),
-            'members': ContentType('members', 'members', sort_key='title', reverse=False),
+                              page_template='pages/whatsnew.html', 
+                              detail_template='details/news-detail.html'),
+            'projects': ContentType('projects', 'projects',
+                                  detail_template='details/project-detail.html'),
+            'members': ContentType('members', 'members', sort_key='title', reverse=False,
+                                 detail_template='details/member-detail.html'),
         }
     
     def load_site_config(self) -> Dict[str, Any]:
@@ -313,21 +316,26 @@ class WebsiteBuilder:
     
     def build_projects_page(self):
         """Build projects page using refactored method."""
-        projects = self.build_content_page(self.content_types['projects'], {
-            'projects_content': lambda: self.render_cards(
-                self.get_all_content(self.content_types['projects']),
-                'cards/project-listing-item.html'
+        projects = self.get_all_content(self.content_types['projects'])
+        self.build_detail_pages(projects, self.content_types['projects'])
+        
+        # Render projects content using specific template that expects 'project' variable
+        template = self.jinja_env.get_template('cards/project-listing-item.html')
+        projects_content_sections = []
+        
+        for project in projects:
+            section_html = template.render(
+                project=project,
+                formatted_date=self.format_date(project['date'])
             )
-        })
+            projects_content_sections.append(section_html)
         
-        # Update context with rendered content
-        projects_content = self.render_cards(projects, 'cards/project-listing-item.html')
+        projects_content = '\n'.join(projects_content_sections)
         
-        # Re-render with actual content
         hero_content = self.build_hero_content('projects')
-        template = self.jinja_env.get_template('pages/projects.html')
+        page_template = self.jinja_env.get_template('pages/projects.html')
         
-        html_content = template.render(
+        html_content = page_template.render(
             site=self.site_config,
             hero=hero_content,
             projects_content=projects_content
@@ -335,17 +343,34 @@ class WebsiteBuilder:
         
         output_file = self.dist_dir / 'projects.html'
         output_file.write_text(html_content, encoding='utf-8')
+        print(f"Built projects.html with {len(projects)} projects")
     
     def build_members_page(self):
         """Build members page using refactored method."""
         members = self.get_all_content(self.content_types['members'])
         self.build_detail_pages(members, self.content_types['members'])
         
-        members_content = self.render_cards(members, 'cards/member-card.html')
+        # Render member cards using specific template that expects member variables
+        template = self.jinja_env.get_template('cards/member-card.html')
+        cards_html = []
+        
+        for member in members:
+            card_html = template.render(
+                id=member['id'],
+                name=member['title'],
+                role=member['metadata'].get('role', 'Member'),
+                skills=member['metadata'].get('skills', []),
+                card_text=member['metadata'].get('card-text', 'MEMBER'),
+                image=member['metadata'].get('image'),
+                metadata=member['metadata'],
+            )
+            cards_html.append(card_html)
+        
+        members_content = '\n'.join(cards_html)
         hero_content = self.build_hero_content('members')
         
-        template = self.jinja_env.get_template('pages/members.html')
-        html_content = template.render(
+        page_template = self.jinja_env.get_template('pages/members.html')
+        html_content = page_template.render(
             site=self.site_config,
             hero=hero_content,
             members_content=members_content
