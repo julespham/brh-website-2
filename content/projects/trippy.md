@@ -8,7 +8,6 @@ lead: Alan Kilian
 members: 1
 excerpt: A holonomic robot based on the Killough platform used for my Mechatronics BS degree from the U of Minnesota.
 ---
-
 <img src="../images/projects/trippy.jpg" alt="Sample image" style="float: right; margin: 25px 25px 25px 25px; border-radius: 8px; height: 450px;">
 
 ### Software
