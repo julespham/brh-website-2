@@ -1,6 +1,6 @@
 ---
 title: ROYGBIV bot
-date: 2015
+date: 2015-01-01
 status: Needs update to ROS2
 image: images/projects/ROYGBIV_bot.png
 text: ROYGBIV bot
