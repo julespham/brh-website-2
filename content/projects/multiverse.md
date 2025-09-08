@@ -4,7 +4,7 @@ date: 2010-01-01
 status: Done and done.
 image: images/projects/you_in_the_dog_multiverse.png
 text: You In The Dog Multiverse
-lead: Buddy Ehrlich
+lead: Buddy E
 members: 1
 github: 
 excerpt: See what you would like in the dog multiverse.
