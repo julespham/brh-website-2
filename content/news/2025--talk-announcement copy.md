@@ -4,9 +4,18 @@ date: 2025-09-09
 excerpt: "If you're not a member, it's easy to join! If you are, let's get you listed on our member directory! If you have a cool project, we would love to showcase you on our site."
 highlight: true
 ---
-**Members**: If you have not yet done it, it would be great to see you on our [membership page](https://bostonrobothackers.com/members.html). It's so simple. Make a text file called yourname.md and email it to me.
+### Should you join?
+
+If you live in the Boston area and are into robots whether with ROS or with another platform. If you use robots in your work or studies or as a hobby. If you want to meet and learn from like minded people. We have monthly meetings and between meetings there are other things going on. Join and make a difference!
+
+All you have to do is to [request an invitation.](https://docs.google.com/forms/d/e/1FAIpQLScYvvhPZmbpyqAoFFkcD_cis5RfagIL6OsL_Nk_qc4a7bsakQ/viewform) Here is the link to the google form. Once you do that, in a matter of days, you will be on our mailing list and an "official" member. Do it today!
+
+### Members:
+
+If you have not yet done it, it would be great to see you on our [membership page](https://bostonrobothackers.com/members.html). It's so simple. Make a text file called yourname.md and email it to me.
 
 ```
+[yourname.md]
 ---
 name: "Johny Appleseed"
 role: "Robot Hacker"
@@ -20,8 +29,12 @@ opentowork: false
 ---
 Johnny Appleseed, born John Chapman in 1988, is a modern software developer known for "planting seeds of open-source code" across the tech landscape. Working remotely from coffee shops throughout the American West in his signature flannel and worn boots, he specializes in creating lightweight programming libraries for startups and small development teams.
 ```
+### Projects
+
+We want to see everyone's projects [listed on our web site.](https://bostonrobothackers.com/projects.html) What a way for us to learn what each of us is doing, what we know and what we want to learn. Just make a textfile called yourproject.md and email it to me. It's that simple!
 
 ```
+[yourproject,md]
 ---
 title: GreenThumb AI
 date: 2025-03-15
