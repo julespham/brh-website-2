@@ -29,6 +29,7 @@ opentowork: false
 ---
 Johnny Appleseed, born John Chapman in 1988, is a modern software developer known for "planting seeds of open-source code" across the tech landscape. Working remotely from coffee shops throughout the American West in his signature flannel and worn boots, he specializes in creating lightweight programming libraries for startups and small development teams.
 ```
+
 ### Project Listings
 
 We want to see everyone's projects [listed on our web site.](https://bostonrobothackers.com/projects.html) What a way for us to learn what each of us is doing, what we know and what we want to learn. Just make a textfile called yourproject.md and email it to me. It's that simple!
