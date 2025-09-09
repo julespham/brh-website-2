@@ -28,9 +28,9 @@ linkedin: "https://www.linkedin.com/in/j_appleseed/"
 projects: ["Apple Robot"]
 opentowork: false
 ---
-Johnny Appleseed, born John Chapman in 1988, is a modern software developer known for "planting seeds of open-source code" across the tech landscape. Working remotely from coffee shops throughout the American West in his signature flannel and worn boots, he specializes in creating lightweight programming libraries for startups and small development teams.
-
+Johnny Appleseed, born John Chapman in 1988, is a modern software developer known for "planting seeds of open-source code" across the tech landscape.
 ```
+So, just create a new text file, and copy/paste the above text into it. Replace all the personal informaiton with yours, as much or as little as you want. And email it to Pito Salas.
 
 ### Project Listings
 
@@ -47,7 +47,8 @@ text: Smart gardening assistant!
 lead: Johnny Appleseed
 members: 3
 github: https://github.com/campusrover/greenthumb-ai
-excerpt: An autonomous plant care robot that monitors soil conditions, waters plants, and provides growth recommendations using computer vision and machine learning.
+excerpt: An autonomous plant care robot that monitors soil conditions, waters plants.
 ---
-An autonomous plant care robot designed to revolutionize indoor gardening through intelligent monitoring and care. This second-generation prototype combines computer vision, environmental sensing, and machine learning to create a comprehensive plant health management system. Built on ROS2 Humble with custom navigation and manipulation packages. The system uses OpenCV for plant health analysis through leaf color and growth pattern recognition.
+An autonomous plant care robot designed to revolutionize indoor gardening through intelligent monitoring and care. This second-generation prototype combines computer vision, environmental sensing, and machine learning to create a comprehensive plant health management system.
 ```
+Same deal as with the member entry, cut/paste the above text into a file, and customzie it with your info and mail it to me.
