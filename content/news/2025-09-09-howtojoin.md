@@ -2,7 +2,7 @@
 title: "Become a member! Get yourself on the website!"
 date: 2025-09-09
 excerpt: "If you're not a member, it's easy to join! If you are, let's get you listed on our member directory! If you have a cool project, we would love to showcase you on our site."
-image: images/news/team.png
+image: images/team.png
 highlight: true
 ---
 ### Should you join?
@@ -29,6 +29,7 @@ projects: ["Apple Robot"]
 opentowork: false
 ---
 Johnny Appleseed, born John Chapman in 1988, is a modern software developer known for "planting seeds of open-source code" across the tech landscape. Working remotely from coffee shops throughout the American West in his signature flannel and worn boots, he specializes in creating lightweight programming libraries for startups and small development teams.
+
 ```
 
 ### Project Listings
