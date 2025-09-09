@@ -2,6 +2,7 @@
 title: "Become a member! Get yourself on the website!"
 date: 2025-09-09
 excerpt: "If you're not a member, it's easy to join! If you are, let's get you listed on our member directory! If you have a cool project, we would love to showcase you on our site."
+image: images/news/team.png
 highlight: true
 ---
 ### Should you join?
